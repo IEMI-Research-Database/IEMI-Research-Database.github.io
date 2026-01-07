@@ -94,9 +94,26 @@
         }
 
         .header-affiliations {
-            max-width: 600px;
+            text-align: center;
+            margin: 6px 0;
+            line-height: 1.5;
+            max-width: 900px;
             margin-left: auto;
             margin-right: auto;
+            font-size: 0.95em;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 768px) {
+            .header-affiliations {
+                font-size: 0.85em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-affiliations {
+                font-size: 0.75em;
+            }
         }
 
         .aff-sup {
@@ -391,7 +408,7 @@
                 <span>·</span>
                 <a href="mailto:wyxu@zju.edu.cn">Wenyuan Xu</a><span class="aff-sup">3</span>
             </p>
-            <p class="header-affiliations">1 The Hong Kong Polytechnic University · 2 Hong Kong University of Science and Technology Guangzhou<br/>3 Zhejiang University · 4 Northeastern University</p>
+            <p class="header-affiliations">1 The Hong Kong Polytechnic University · 2 Hong Kong University of Science and Technology Guangzhou · 3 Zhejiang University · 4 Northeastern University</p>
             <div class="header-logos">
                 <img class="header-logo" src="imgaes\polyu-logo.png" alt="The Hong Kong Polytechnic University">
                 <img class="header-logo" src="https://via.placeholder.com/120x50?text=HKUST+GZ+Logo" alt="HKUST Guangzhou">
