@@ -94,6 +94,26 @@
             margin-left: 1px;
         }
 
+        .header-logos {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .header-logo {
+            height: 50px;
+            object-fit: contain;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .header-logo:hover {
+            opacity: 1;
+        }
+
         .badge {
             display: inline-block;
             background: #e74c3c;
@@ -360,6 +380,11 @@
                 <a href="mailto:wyxu@zju.edu.cn">Wenyuan Xu</a><span class="aff-sup">3</span>
             </p>
             <p class="header-affiliations">1 The Hong Kong Polytechnic University · 2 Northeastern University · 3 Zhejiang University</p>
+            <div class="header-logos">
+                <img class="header-logo" src="https://via.placeholder.com/120x50?text=PolyU+Logo" alt="The Hong Kong Polytechnic University">
+                <img class="header-logo" src="https://via.placeholder.com/120x50?text=Northeastern+Logo" alt="Northeastern University">
+                <img class="header-logo" src="https://via.placeholder.com/120x50?text=ZJU+Logo" alt="Zhejiang University">
+            </div>
             <div>
                 <span class="badge">USENIX Security 2026</span>
                 <a href="https://visitor-badge.laobi.icu/badge?page_id=iemi-research-database.github.io" aria-label="Visitor counter" style="margin-left:6px;">
