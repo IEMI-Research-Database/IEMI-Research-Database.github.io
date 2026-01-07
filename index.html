@@ -762,57 +762,87 @@
     <script>
         const papers = [
             {
-                title: "EMFI Attacks on Microcontrollers",
+                title: "EMFI Attacks on ARM Microcontrollers",
                 venue: "USENIX Security",
                 year: 2022,
                 targetSystem: "Microcontroller",
                 targetSampler: "ADC",
-                attackParams: "EM pulse, 200 V/m, 100 ns",
+                frequency: "100-500 MHz",
+                power: "15 dBm",
+                distance: "10 cm",
+                amplitude: "200 V/m",
+                duration: "100 ns",
+                effect: "Bit flips, data corruption",
                 link: "#"
             },
             {
-                title: "IEMI on Automotive CAN",
+                title: "IEMI on Automotive CAN Bus",
                 venue: "IEEE S&P",
                 year: 2021,
                 targetSystem: "Automotive",
                 targetSampler: "CAN transceiver",
-                attackParams: "RF injection, 2.4 GHz, 10 dBm",
+                frequency: "2.4 GHz",
+                power: "10 dBm",
+                distance: "5-50 m",
+                amplitude: "1 V/m",
+                duration: "Continuous",
+                effect: "Message injection, bus errors",
                 link: "#"
             },
             {
-                title: "Sensor Spoofing in UAVs",
+                title: "Sensor Spoofing in UAVs via EMI",
                 venue: "NDSS",
                 year: 2020,
                 targetSystem: "UAV",
-                targetSampler: "IMU",
-                attackParams: "Continuous wave, 1.2 GHz, 15 dBm",
+                targetSampler: "IMU (9-axis)",
+                frequency: "1.2 GHz",
+                power: "15 dBm",
+                distance: "30 m",
+                amplitude: "2 V/m",
+                duration: "Pulse",
+                effect: "False acceleration, gyro deviation",
                 link: "#"
             },
             {
-                title: "Pacemaker EMI Study",
+                title: "Pacemaker EMI Susceptibility Study",
                 venue: "CCS",
                 year: 2019,
-                targetSystem: "Medical",
-                targetSampler: "ECG sensor",
-                attackParams: "Burst, 400 MHz, 8 dBm",
+                targetSystem: "Medical Device",
+                targetSampler: "ECG sensing circuit",
+                frequency: "400 MHz",
+                power: "8 dBm",
+                distance: "1-10 cm",
+                amplitude: "0.5 V/m",
+                duration: "Burst",
+                effect: "Sensing errors, device malfunction",
                 link: "#"
             },
             {
-                title: "IEMI on Industrial PLC",
+                title: "IEMI on Industrial PLC Systems",
                 venue: "RAID",
                 year: 2023,
-                targetSystem: "Industrial control",
-                targetSampler: "PLC input",
-                attackParams: "Conducted, 50 MHz, 120 dBuV",
+                targetSystem: "Industrial Control",
+                targetSampler: "PLC analog input",
+                frequency: "10-100 MHz",
+                power: "120 dBuV",
+                distance: "Conducted",
+                amplitude: "150 V/m",
+                duration: "Transient",
+                effect: "False readings, control failure",
                 link: "#"
             },
             {
-                title: "Side-channel via EMI",
+                title: "Side-channel Information Leakage via EMI",
                 venue: "CHES",
                 year: 2018,
                 targetSystem: "Smartcard",
-                targetSampler: "Power probe",
-                attackParams: "Near-field probe, 300 MHz sweep",
+                targetSampler: "Power supply probe",
+                frequency: "DC-500 MHz",
+                power: "N/A (passive)",
+                distance: "1-5 cm",
+                amplitude: "mV level",
+                duration: "Continuous",
+                effect: "Key recovery, cryptographic breach",
                 link: "#"
             }
         ];
@@ -851,7 +881,8 @@
                 <tr>
                     <td>${paper.targetSystem}</td>
                     <td>${paper.targetSampler}</td>
-                    <td>${paper.attackParams}</td>
+                    <td><small><strong>Freq:</strong> ${paper.frequency}<br/><strong>Power:</strong> ${paper.power}<br/><strong>Dist:</strong> ${paper.distance}</small></td>
+                    <td><small><strong>Amp:</strong> ${paper.amplitude}<br/><strong>Dur:</strong> ${paper.duration}<br/><strong>Effect:</strong> ${paper.effect}</small></td>
                     <td>${paper.title}</td>
                     <td>${paper.venue}</td>
                     <td>${paper.year}</td>
@@ -864,8 +895,9 @@
                         <tr>
                             <th>Target System</th>
                             <th>Target Sampler</th>
-                            <th>Attack Parameters</th>
-                            <th>Paper</th>
+                            <th>EM Parameters</th>
+                            <th>Effects & Amplitude</th>
+                            <th>Paper Title</th>
                             <th>Venue</th>
                             <th>Year</th>
                         </tr>
