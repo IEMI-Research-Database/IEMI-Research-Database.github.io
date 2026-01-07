@@ -102,6 +102,9 @@
             margin-right: auto;
             font-size: 0.95em;
             flex-wrap: wrap;
+            display: flex;
+            justify-content: center;
+            gap: 6px;
         }
 
         @media (max-width: 768px) {
@@ -220,6 +223,64 @@
             margin: 25px 0;
             flex-wrap: wrap;
             justify-content: center;
+        }
+
+        .search-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: flex-end;
+            margin: 20px 0 10px;
+        }
+
+        .search-controls label {
+            display: flex;
+            flex-direction: column;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 0.95em;
+        }
+
+        .search-select {
+            min-width: 220px;
+            padding: 10px 12px;
+            border: 1px solid #dfe6e9;
+            border-radius: 6px;
+            background: white;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+        }
+
+        .search-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .search-summary {
+            color: #7f8c8d;
+            margin-bottom: 10px;
+        }
+
+        .search-results table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .search-results th,
+        .search-results td {
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .search-results th {
+            background: #f6f8fa;
+            color: #2c3e50;
+            font-weight: 700;
+        }
+
+        .search-results tr:hover {
+            background: #fdfefe;
         }
 
         .btn {
@@ -567,6 +628,32 @@
                 </div>
             </section>
 
+            <!-- 数据库检索 -->
+            <section class="section" id="paper-database">
+                <h2>IEMI Paper Database</h2>
+                <p>Filter surveyed papers by target system or target sampler.</p>
+
+                <div class="search-controls">
+                    <label for="filter-system">Target System
+                        <select id="filter-system" class="search-select">
+                            <option value="">Any</option>
+                        </select>
+                    </label>
+                    <label for="filter-sampler">Target Sampler
+                        <select id="filter-sampler" class="search-select">
+                            <option value="">Any</option>
+                        </select>
+                    </label>
+                    <div class="search-actions">
+                        <button id="search-btn" class="btn" type="button">Search</button>
+                        <button id="reset-btn" class="btn btn-secondary" type="button">Reset</button>
+                    </div>
+                </div>
+
+                <div id="search-summary" class="search-summary"></div>
+                <div class="search-results" id="search-results"></div>
+            </section>
+
             <!-- 作者信息 -->
             <section class="section">
                 <h2>Authors</h2>
@@ -670,6 +757,149 @@
             </section>
         </div>
     </main>
+
+    <script>
+        const papers = [
+            {
+                title: "EMFI Attacks on Microcontrollers",
+                venue: "USENIX Security",
+                year: 2022,
+                targetSystem: "Microcontroller",
+                targetSampler: "ADC",
+                attackParams: "EM pulse, 200 V/m, 100 ns",
+                link: "#"
+            },
+            {
+                title: "IEMI on Automotive CAN",
+                venue: "IEEE S&P",
+                year: 2021,
+                targetSystem: "Automotive",
+                targetSampler: "CAN transceiver",
+                attackParams: "RF injection, 2.4 GHz, 10 dBm",
+                link: "#"
+            },
+            {
+                title: "Sensor Spoofing in UAVs",
+                venue: "NDSS",
+                year: 2020,
+                targetSystem: "UAV",
+                targetSampler: "IMU",
+                attackParams: "Continuous wave, 1.2 GHz, 15 dBm",
+                link: "#"
+            },
+            {
+                title: "Pacemaker EMI Study",
+                venue: "CCS",
+                year: 2019,
+                targetSystem: "Medical",
+                targetSampler: "ECG sensor",
+                attackParams: "Burst, 400 MHz, 8 dBm",
+                link: "#"
+            },
+            {
+                title: "IEMI on Industrial PLC",
+                venue: "RAID",
+                year: 2023,
+                targetSystem: "Industrial control",
+                targetSampler: "PLC input",
+                attackParams: "Conducted, 50 MHz, 120 dBuV",
+                link: "#"
+            },
+            {
+                title: "Side-channel via EMI",
+                venue: "CHES",
+                year: 2018,
+                targetSystem: "Smartcard",
+                targetSampler: "Power probe",
+                attackParams: "Near-field probe, 300 MHz sweep",
+                link: "#"
+            }
+        ];
+
+        const systemSelect = document.getElementById('filter-system');
+        const samplerSelect = document.getElementById('filter-sampler');
+        const resultsDiv = document.getElementById('search-results');
+        const summaryDiv = document.getElementById('search-summary');
+
+        function renderOptions() {
+            const systems = Array.from(new Set(papers.map(p => p.targetSystem))).sort();
+            const samplers = Array.from(new Set(papers.map(p => p.targetSampler))).sort();
+
+            systems.forEach(system => {
+                const opt = document.createElement('option');
+                opt.value = system;
+                opt.textContent = system;
+                systemSelect.appendChild(opt);
+            });
+
+            samplers.forEach(sampler => {
+                const opt = document.createElement('option');
+                opt.value = sampler;
+                opt.textContent = sampler;
+                samplerSelect.appendChild(opt);
+            });
+        }
+
+        function renderTable(data) {
+            if (!data.length) {
+                resultsDiv.innerHTML = '<p style="color:#7f8c8d;">No results. Try a different filter.</p>';
+                return;
+            }
+
+            const rows = data.map(paper => `
+                <tr>
+                    <td>${paper.targetSystem}</td>
+                    <td>${paper.targetSampler}</td>
+                    <td>${paper.attackParams}</td>
+                    <td>${paper.title}</td>
+                    <td>${paper.venue}</td>
+                    <td>${paper.year}</td>
+                </tr>
+            `).join('');
+
+            resultsDiv.innerHTML = `
+                <table aria-label="IEMI papers">
+                    <thead>
+                        <tr>
+                            <th>Target System</th>
+                            <th>Target Sampler</th>
+                            <th>Attack Parameters</th>
+                            <th>Paper</th>
+                            <th>Venue</th>
+                            <th>Year</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${rows}
+                    </tbody>
+                </table>
+            `;
+        }
+
+        function filterPapers() {
+            const system = systemSelect.value;
+            const sampler = samplerSelect.value;
+
+            const filtered = papers.filter(paper => {
+                const matchSystem = !system || paper.targetSystem === system;
+                const matchSampler = !sampler || paper.targetSampler === sampler;
+                return matchSystem && matchSampler;
+            });
+
+            summaryDiv.textContent = `${filtered.length} result${filtered.length === 1 ? '' : 's'} found`;
+            renderTable(filtered);
+        }
+
+        document.getElementById('search-btn').addEventListener('click', filterPapers);
+        document.getElementById('reset-btn').addEventListener('click', () => {
+            systemSelect.value = '';
+            samplerSelect.value = '';
+            filterPapers();
+        });
+
+        renderOptions();
+        filterPapers();
+    </script>
 
     <footer>
         <div class="container">
