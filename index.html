@@ -79,6 +79,21 @@
             text-decoration: underline;
         }
 
+        .header-authors {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: center;
+            font-size: 0.98em;
+        }
+
+        .aff-sup {
+            font-size: 0.7em;
+            vertical-align: super;
+            color: #34495e;
+            margin-left: 1px;
+        }
+
         .badge {
             display: inline-block;
             background: #e74c3c;
@@ -317,17 +332,25 @@
         <div class="container">
             <h1>🔒 SoK: Security of Cyber-Physical Systems Under Intentional Electromagnetic Interference Attacks</h1>
             <p class="header-authors">
-                <a href="mailto:qinhong.jiang@polyu.edu.hk">Qinhong Jiang</a> ·
-                <a href="mailto:y.long@northeastern.edu">Yan Long</a> ·
-                <a href="mailto:you-qian.zhang@polyu.edu.hk">Youqian Zhang</a> ·
-                <a href="mailto:yanchen@zju.edu.cn">Chen Yan</a> ·
-                <a href="mailto:xji@zju.edu.cn">Xiaoyu Ji</a> ·
-                <a href="mailto:csxluo@comp.polyu.edu.hk">Xiapu Luo</a> ·
-                <a href="mailto:k.fu@northeastern.edu">Kevin Fu</a> ·
-                <a href="mailto:jiannong.cao@polyu.edu.hk">Jiannong Cao</a> ·
-                <a href="mailto:wyxu@zju.edu.cn">Wenyuan Xu</a>
+                <a href="mailto:qinhong.jiang@polyu.edu.hk">Qinhong Jiang</a><span class="aff-sup">1</span>
+                <span>·</span>
+                <a href="mailto:y.long@northeastern.edu">Yan Long</a><span class="aff-sup">2</span>
+                <span>·</span>
+                <a href="mailto:you-qian.zhang@polyu.edu.hk">Youqian Zhang</a><span class="aff-sup">1</span>
+                <span>·</span>
+                <a href="mailto:yanchen@zju.edu.cn">Chen Yan</a><span class="aff-sup">3</span>
+                <span>·</span>
+                <a href="mailto:xji@zju.edu.cn">Xiaoyu Ji</a><span class="aff-sup">3</span>
+                <span>·</span>
+                <a href="mailto:csxluo@comp.polyu.edu.hk">Xiapu Luo</a><span class="aff-sup">1</span>
+                <span>·</span>
+                <a href="mailto:k.fu@northeastern.edu">Kevin Fu</a><span class="aff-sup">2</span>
+                <span>·</span>
+                <a href="mailto:jiannong.cao@polyu.edu.hk">Jiannong Cao</a><span class="aff-sup">1</span>
+                <span>·</span>
+                <a href="mailto:wyxu@zju.edu.cn">Wenyuan Xu</a><span class="aff-sup">3</span>
             </p>
-            <p class="header-affiliations">The Hong Kong Polytechnic University · Northeastern University · Zhejiang University</p>
+            <p class="header-affiliations">1 The Hong Kong Polytechnic University · 2 Northeastern University · 3 Zhejiang University</p>
             <div>
                 <span class="badge">USENIX Security 2026</span>
                 <a href="https://visitor-badge.laobi.icu/badge?page_id=iemi-research-database.github.io" aria-label="Visitor counter" style="margin-left:6px;">
