@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoK: Security of CPS Under IEMI Attacks</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 40px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        header p {
+            font-size: 1.2em;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin: 5px;
+            font-size: 0.9em;
+        }
+
+        .section {
+            background: white;
+            border-radius: 8px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            color: #2c3e50;
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: #34495e;
+            font-size: 1.5em;server
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+            color: #555;
+        }
+
+        .authors {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+            justify-content: center;
+        }
+
+        .author {
+            text-align: center;
+        }
+
+        .author-name {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .author-affiliation {
+            font-size: 0.9em;
+            color: #7f8c8d;
+        }
+
+        .links {
+            display: flex;
+            gap: 15px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .btn:hover {
+            background: #2980b9;
+        }
+
+        .btn-secondary {
+            background: #95a5a6;
+        }
+
+        .btn-secondary:hover {
+            background: #7f8c8d;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 20px;
+            border-left: 4px solid #ffc107;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .feature-card h4 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            font-size: 0.95em;
+            color: rgba(255,255,255,0.9);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+        }
+
+        footer a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .video-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .video-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .video-item h4 {
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .video-item video {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 4px;
+        }
+
+        .citation {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        .table-content {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table tr:hover {
+            background: #f5f5f5;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🔒 SoK: Security of Cyber-Physical Systems Under Intentional Electromagnetic Interference Attacks</h1>
+            <p>赛博物理系统在意图性电磁干扰攻击下的安全性系统化知识</p>
+            <div>
+                <span class="badge">USENIX Security 2026</span>
+                <span class="badge">已录取 Accepted</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- 摘要 -->
+            <section class="section">
+                <h2>📋 摘要 Abstract</h2>
+                <div class="highlight">
+                    <p>本文对赛博物理系统（CPS）在意图性电磁干扰（IEMI）攻击下的安全性进行了首次系统化知识总结（SoK）。我们深入分析了电磁干扰如何影响CPS的关键组件，包括传感器、致动器和控制系统，并系统地整理了现有的防御机制。通过全面的文献综述和实验验证，我们识别了CPS在IEMI防护中的关键挑战，并提出了改进建议。</p>
+                </div>
+            </section>
+
+            <!-- 核心贡献 -->
+            <section class="section">
+                <h2>✨ 核心贡献 Key Contributions</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>系统化知识框架</h4>
+                        <p>首次全面整理IEMI攻击和CPS防御的系统化知识体系</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>攻击分类和分析</h4>
+                        <p>详细分类IEMI攻击类型和机制，揭示威胁向量</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>防御机制总结</h4>
+                        <p>系统总结现有防御策略和防护技术</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>开放问题和机遇</h4>
+                        <p>识别未来研究方向和挑战</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 研究动机 -->
+            <section class="section">
+                <h2>🎯 研究动机 Motivation</h2>
+                <p>赛博物理系统广泛应用于电网、交通系统、工业控制、医疗设备等关键基础设施。然而，这些系统日益面临电磁干扰攻击的威胁。意图性电磁干扰（IEMI）攻击可能导致：</p>
+                <ul style="margin-left: 20px; margin-bottom: 15px;">
+                    <li>✗ 传感器故障或数据篡改</li>
+                    <li>✗ 控制信号中断</li>
+                    <li>✗ 系统意外停机或错误操作</li>
+                    <li>✗ 严重的安全和经济后果</li>
+                </ul>
+                <p>尽管IEMI攻击威胁日益增加，但对于CPS安全防御的系统化研究仍然不足。本文的目标是为研究人员、工程师和决策者提供全面的知识框架。</p>
+            </section>
+
+            <!-- 研究范围 -->
+            <section class="section">
+                <h2>🔍 研究范围 Research Scope</h2>
+                <h3>关键基础设施</h3>
+                <p>本研究关注以下关键领域的CPS安全：</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>应用域</th>
+                            <th>典型系统</th>
+                            <th>IEMI威胁等级</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>电力系统</td>
+                            <td>电网、变电站、智能电表</td>
+                            <td>极高</td>
+                        </tr>
+                        <tr>
+                            <td>交通运输</td>
+                            <td>车辆、铁路、航空</td>
+                            <td>极高</td>
+                        </tr>
+                        <tr>
+                            <td>工业控制</td>
+                            <td>SCADA、PLC、工业机器人</td>
+                            <td>高</td>
+                        </tr>
+                        <tr>
+                            <td>医疗设备</td>
+                            <td>起搏器、植入式医疗器械</td>
+                            <td>高</td>
+                        </tr>
+                        <tr>
+                            <td>通信系统</td>
+                            <td>无线通讯、5G基站</td>
+                            <td>高</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>攻击类型</h3>
+                <p>本文分析的主要IEMI攻击类型包括：</p>
+                <ul style="margin-left: 20px; margin-bottom: 15px;">
+                    <li><strong>高功率微波（HPM）攻击</strong>：直接损害或干扰电子设备</li>
+                    <li><strong>低频电磁脉冲（EMP）</strong>：诱发感应电流</li>
+                    <li><strong>持续波干扰</strong>：长期干扰无线通信</li>
+                    <li><strong>定向能武器（DEW）攻击</strong>：精准目标攻击</li>
+                </ul>
+            </section>
+
+            <!-- 主要发现 -->
+            <section class="section">
+                <h2>🔬 主要发现 Key Findings</h2>
+                <h3>1. 物理层脆弱性</h3>
+                <p>CPS的物理层（传感器、通信网络）普遍存在对IEMI的易受攻击性，许多商用传感器缺乏基本的EMC（电磁兼容性）设计。</p>
+
+                <h3>2. 防御机制分类</h3>
+                <p>现有防御可分为三类：</p>
+                <ul style="margin-left: 20px; margin-bottom: 15px;">
+                    <li><strong>被动防护</strong>：屏蔽、隔离、接地设计</li>
+                    <li><strong>主动防护</strong>：检测、恢复算法</li>
+                    <li><strong>系统级防护</strong>：冗余设计、容错机制</li>
+                </ul>
+
+                <h3>3. 防御差距</h3>
+                <p>现有防御机制在以下方面存在不足：</p>
+                <ul style="margin-left: 20px; margin-bottom: 15px;">
+                    <li>缺乏标准化的安全评估框架</li>
+                    <li>跨域防御方案不协调</li>
+                    <li>成本与安全的平衡问题</li>
+                </ul>
+            </section>
+
+            <!-- 推荐方向 -->
+            <section class="section">
+                <h2>🚀 未来研究方向 Future Directions</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>标准化框架</h4>
+                        <p>建立统一的IEMI安全评估和认证标准</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>新型防御技术</h4>
+                        <p>开发适应新型攻击的创新防护方案</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>跨学科合作</h4>
+                        <p>整合电磁学、控制论和网络安全研究</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>实际部署</h4>
+                        <p>将理论防御转化为实际可部署的解决方案</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 作者信息 -->
+            <section class="section">
+                <h2>👥 作者 Authors</h2>
+                <div style="text-align: center;">
+                    <p style="font-size: 1.1em; color: #2c3e50; margin: 20px 0;">
+                        <em>（请添加作者名单和所属机构）</em>
+                    </p>
+                    <p style="color: #7f8c8d; margin-top: 30px; font-size: 0.95em;">
+                        Correspondence: <a href="mailto:your.email@example.com" style="color: #3498db;">your.email@example.com</a>
+                    </p>
+                </div>
+            </section>
+
+            <!-- 资源 -->
+            <section class="section">
+                <h2>📚 资源 Resources</h2>
+                <div class="links">
+                    <a href="#" class="btn" title="论文PDF">📄 论文全文 (PDF)</a>
+                    <a href="#" class="btn btn-secondary" title="代码仓库">💻 代码 (GitHub)</a>
+                    <a href="#" class="btn btn-secondary" title="数据集">📊 数据集</a>
+                    <a href="#" class="btn btn-secondary" title="Slides">🎤 演讲稿</a>
+                </div>
+                <p style="margin-top: 30px; text-align: center; color: #7f8c8d;">
+                    资源链接将在论文发表后更新。<br>
+                    Resources will be updated after the paper is published.
+                </p>
+            </section>
+
+            <!-- 引用 -->
+            <section class="section">
+                <h2>📖 引用 Citation</h2>
+                <p>如果您在研究中使用了本论文，请按以下格式引用：</p>
+                <div class="citation">
+@inproceedings{iemi-cps-sok-2026,
+  title={SoK: Security of Cyber-Physical Systems Under Intentional Electromagnetic Interference Attacks},
+  author={Your Name and Collaborators},
+  booktitle={Proceedings of the USENIX Security Symposium},
+  year={2026},
+  organization={USENIX}
+}
+                </div>
+            </section>
+
+            <!-- 致谢 -->
+            <section class="section">
+                <h2>🙏 致谢 Acknowledgments</h2>
+                <p>感谢USENIX Security 2026的接受，以及所有贡献者和评审专家的宝贵意见。</p>
+                <p>特别感谢：</p>
+                <ul style="margin-left: 20px; margin-bottom: 15px;">
+                    <li>各合作机构提供的支持</li>
+                    <li>实验参与者的配合</li>
+                    <li>资助机构的支持</li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>
+                <strong>SoK: Security of Cyber-Physical Systems Under IEMI Attacks</strong>
+            </p>
+            <p style="margin-top: 15px; font-size: 0.9em;">
+                Accepted at <strong>USENIX Security 2026</strong> | 
+                <a href="https://www.usenix.org/conference/usenixsecurity26">Conference Website</a>
+            </p>
+            <p style="margin-top: 15px; font-size: 0.9em;">
+                Website style inspired by <a href="https://web-cloak.github.io/">WebCloak</a> | 
+                <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">License: CC BY-NC-SA 4.0</a>
+            </p>
+            <p style="margin-top: 20px; font-size: 0.85em; color: #bdc3c7;">
+                Last updated: January 2026
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
