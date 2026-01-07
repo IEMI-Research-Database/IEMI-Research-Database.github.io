@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -74,7 +74,7 @@
 
         h3 {
             color: #34495e;
-            font-size: 1.5em;server
+            font-size: 1.5em;
             margin-top: 25px;
             margin-bottom: 15px;
         }
@@ -282,10 +282,10 @@
     <header>
         <div class="container">
             <h1>🔒 SoK: Security of Cyber-Physical Systems Under Intentional Electromagnetic Interference Attacks</h1>
-            <p>赛博物理系统在意图性电磁干扰攻击下的安全性系统化知识</p>
+            <p>A systematization of knowledge on CPS security under IEMI attacks.</p>
             <div>
                 <span class="badge">USENIX Security 2026</span>
-                <span class="badge">已录取 Accepted</span>
+                <span class="badge">Accepted</span>
             </div>
         </div>
     </header>
@@ -294,152 +294,151 @@
         <div class="container">
             <!-- 摘要 -->
             <section class="section">
-                <h2>📋 摘要 Abstract</h2>
+                <h2>Abstract</h2>
                 <div class="highlight">
-                    <p>本文对赛博物理系统（CPS）在意图性电磁干扰（IEMI）攻击下的安全性进行了首次系统化知识总结（SoK）。我们深入分析了电磁干扰如何影响CPS的关键组件，包括传感器、致动器和控制系统，并系统地整理了现有的防御机制。通过全面的文献综述和实验验证，我们识别了CPS在IEMI防护中的关键挑战，并提出了改进建议。</p>
+                    <p>This work presents a systematization of knowledge (SoK) on the security of cyber-physical systems (CPS) under intentional electromagnetic interference (IEMI) attacks. We analyze how electromagnetic interference affects key CPS components including sensors, actuators, and control systems, and we organize existing defense mechanisms. Through an extensive literature review and synthesis of empirical findings, we identify critical challenges in protecting CPS against IEMI and propose directions for more robust defenses.</p>
                 </div>
             </section>
 
             <!-- 核心贡献 -->
             <section class="section">
-                <h2>✨ 核心贡献 Key Contributions</h2>
+                <h2>Key Contributions</h2>
                 <div class="feature-grid">
                     <div class="feature-card">
-                        <h4>系统化知识框架</h4>
-                        <p>首次全面整理IEMI攻击和CPS防御的系统化知识体系</p>
+                        <h4>Systematization Framework</h4>
+                        <p>First comprehensive organization of IEMI attack taxonomy and CPS defenses.</p>
                     </div>
                     <div class="feature-card">
-                        <h4>攻击分类和分析</h4>
-                        <p>详细分类IEMI攻击类型和机制，揭示威胁向量</p>
+                        <h4>Attack Taxonomy</h4>
+                        <p>Detailed categorization of IEMI types and mechanisms, exposing threat vectors.</p>
                     </div>
                     <div class="feature-card">
-                        <h4>防御机制总结</h4>
-                        <p>系统总结现有防御策略和防护技术</p>
+                        <h4>Defense Survey</h4>
+                        <p>Systematic summary of current protection strategies and technologies.</p>
                     </div>
                     <div class="feature-card">
-                        <h4>开放问题和机遇</h4>
-                        <p>识别未来研究方向和挑战</p>
+                        <h4>Open Problems</h4>
+                        <p>Identification of research challenges and future opportunities.</p>
                     </div>
                 </div>
             </section>
 
             <!-- 研究动机 -->
             <section class="section">
-                <h2>🎯 研究动机 Motivation</h2>
-                <p>赛博物理系统广泛应用于电网、交通系统、工业控制、医疗设备等关键基础设施。然而，这些系统日益面临电磁干扰攻击的威胁。意图性电磁干扰（IEMI）攻击可能导致：</p>
+                <h2>Motivation</h2>
+                <p>Cyber-physical systems (CPS) underpin critical infrastructure including power grids, transportation, industrial control, and medical devices. These systems increasingly face electromagnetic interference threats. Intentional electromagnetic interference (IEMI) can lead to:</p>
                 <ul style="margin-left: 20px; margin-bottom: 15px;">
-                    <li>✗ 传感器故障或数据篡改</li>
-                    <li>✗ 控制信号中断</li>
-                    <li>✗ 系统意外停机或错误操作</li>
-                    <li>✗ 严重的安全和经济后果</li>
+                    <li>✗ Sensor malfunctions or data tampering</li>
+                    <li>✗ Control signal disruption</li>
+                    <li>✗ System outages or unsafe operations</li>
+                    <li>✗ Severe safety and economic impacts</li>
                 </ul>
-                <p>尽管IEMI攻击威胁日益增加，但对于CPS安全防御的系统化研究仍然不足。本文的目标是为研究人员、工程师和决策者提供全面的知识框架。</p>
+                <p>Despite growing IEMI threats, systematic study of CPS defenses remains limited. Our goal is to provide a comprehensive knowledge framework for researchers, engineers, and decision makers.</p>
             </section>
 
             <!-- 研究范围 -->
             <section class="section">
-                <h2>🔍 研究范围 Research Scope</h2>
-                <h3>关键基础设施</h3>
-                <p>本研究关注以下关键领域的CPS安全：</p>
+                <h2>Research Scope</h2>
+                <h3>Critical Domains</h3>
+                <p>We focus on CPS security across the following domains:</p>
                 <table>
                     <thead>
                         <tr>
-                            <th>应用域</th>
-                            <th>典型系统</th>
-                            <th>IEMI威胁等级</th>
+                            <th>Domain</th>
+                            <th>Representative Systems</th>
+                            <th>IEMI Threat Level</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>电力系统</td>
-                            <td>电网、变电站、智能电表</td>
-                            <td>极高</td>
+                            <td>Power Systems</td>
+                            <td>Grid, substations, smart meters</td>
+                            <td>Very High</td>
                         </tr>
                         <tr>
-                            <td>交通运输</td>
-                            <td>车辆、铁路、航空</td>
-                            <td>极高</td>
+                            <td>Transportation</td>
+                            <td>Vehicles, rail, aviation</td>
+                            <td>Very High</td>
                         </tr>
                         <tr>
-                            <td>工业控制</td>
-                            <td>SCADA、PLC、工业机器人</td>
-                            <td>高</td>
+                            <td>Industrial Control</td>
+                            <td>SCADA, PLC, industrial robots</td>
+                            <td>High</td>
                         </tr>
                         <tr>
-                            <td>医疗设备</td>
-                            <td>起搏器、植入式医疗器械</td>
-                            <td>高</td>
+                            <td>Medical Devices</td>
+                            <td>Pacemakers, implantable devices</td>
+                            <td>High</td>
                         </tr>
                         <tr>
-                            <td>通信系统</td>
-                            <td>无线通讯、5G基站</td>
-                            <td>高</td>
+                            <td>Communications</td>
+                            <td>Wireless networks, 5G base stations</td>
+                            <td>High</td>
                         </tr>
                     </tbody>
                 </table>
 
-                <h3>攻击类型</h3>
-                <p>本文分析的主要IEMI攻击类型包括：</p>
+                <h3>Attack Types</h3>
+                <p>Major IEMI attack types covered include:</p>
                 <ul style="margin-left: 20px; margin-bottom: 15px;">
-                    <li><strong>高功率微波（HPM）攻击</strong>：直接损害或干扰电子设备</li>
-                    <li><strong>低频电磁脉冲（EMP）</strong>：诱发感应电流</li>
-                    <li><strong>持续波干扰</strong>：长期干扰无线通信</li>
-                    <li><strong>定向能武器（DEW）攻击</strong>：精准目标攻击</li>
+                    <li><strong>High-Power Microwave (HPM)</strong>: Direct damage or interference to electronics</li>
+                    <li><strong>Electromagnetic Pulse (EMP)</strong>: Induced currents and disruptions</li>
+                    <li><strong>Continuous Wave (CW) Jamming</strong>: Sustained interference of wireless links</li>
+                    <li><strong>Directed Energy Weapons (DEW)</strong>: Precise, targeted attacks</li>
                 </ul>
             </section>
 
             <!-- 主要发现 -->
             <section class="section">
-                <h2>🔬 主要发现 Key Findings</h2>
-                <h3>1. 物理层脆弱性</h3>
-                <p>CPS的物理层（传感器、通信网络）普遍存在对IEMI的易受攻击性，许多商用传感器缺乏基本的EMC（电磁兼容性）设计。</p>
+                <h2>Key Findings</h2>
+                <h3>1. Physical-Layer Vulnerabilities</h3>
+                <p>CPS physical layers (sensors, networks) are widely susceptible to IEMI; many commercial sensors lack robust EMC design.</p>
 
-                <h3>2. 防御机制分类</h3>
-                <p>现有防御可分为三类：</p>
+                <h3>2. Defense Categories</h3>
+                <p>Defenses can be grouped into three categories:</p>
                 <ul style="margin-left: 20px; margin-bottom: 15px;">
-                    <li><strong>被动防护</strong>：屏蔽、隔离、接地设计</li>
-                    <li><strong>主动防护</strong>：检测、恢复算法</li>
-                    <li><strong>系统级防护</strong>：冗余设计、容错机制</li>
+                    <li><strong>Passive protection</strong>: Shielding, isolation, grounding</li>
+                    <li><strong>Active protection</strong>: Detection and recovery algorithms</li>
+                    <li><strong>System-level protection</strong>: Redundancy and fault tolerance</li>
                 </ul>
-
-                <h3>3. 防御差距</h3>
-                <p>现有防御机制在以下方面存在不足：</p>
+                <h3>3. Defense Gaps</h3>
+                <p>Current defenses fall short in:</p>
                 <ul style="margin-left: 20px; margin-bottom: 15px;">
-                    <li>缺乏标准化的安全评估框架</li>
-                    <li>跨域防御方案不协调</li>
-                    <li>成本与安全的平衡问题</li>
+                    <li>Lack of standardized security evaluation frameworks</li>
+                    <li>Poor cross-domain coordination of defense strategies</li>
+                    <li>Cost versus security trade-off challenges</li>
                 </ul>
             </section>
 
             <!-- 推荐方向 -->
             <section class="section">
-                <h2>🚀 未来研究方向 Future Directions</h2>
+                <h2>Future Directions</h2>
                 <div class="feature-grid">
                     <div class="feature-card">
-                        <h4>标准化框架</h4>
-                        <p>建立统一的IEMI安全评估和认证标准</p>
+                        <h4>Standardization</h4>
+                        <p>Develop unified IEMI security evaluation and certification standards.</p>
                     </div>
                     <div class="feature-card">
-                        <h4>新型防御技术</h4>
-                        <p>开发适应新型攻击的创新防护方案</p>
+                        <h4>Novel Defenses</h4>
+                        <p>Create innovative protection strategies for evolving attacks.</p>
                     </div>
                     <div class="feature-card">
-                        <h4>跨学科合作</h4>
-                        <p>整合电磁学、控制论和网络安全研究</p>
+                        <h4>Interdisciplinary Collaboration</h4>
+                        <p>Integrate electromagnetics, control theory, and cybersecurity.</p>
                     </div>
                     <div class="feature-card">
-                        <h4>实际部署</h4>
-                        <p>将理论防御转化为实际可部署的解决方案</p>
+                        <h4>Practical Deployment</h4>
+                        <p>Translate theoretical defenses into deployable solutions.</p>
                     </div>
                 </div>
             </section>
 
             <!-- 作者信息 -->
             <section class="section">
-                <h2>👥 作者 Authors</h2>
+                <h2>Authors</h2>
                 <div style="text-align: center;">
                     <p style="font-size: 1.1em; color: #2c3e50; margin: 20px 0;">
-                        <em>（请添加作者名单和所属机构）</em>
+                        <em>(Please add the author list and affiliations.)</em>
                     </p>
                     <p style="color: #7f8c8d; margin-top: 30px; font-size: 0.95em;">
                         Correspondence: <a href="mailto:your.email@example.com" style="color: #3498db;">your.email@example.com</a>
@@ -449,23 +448,22 @@
 
             <!-- 资源 -->
             <section class="section">
-                <h2>📚 资源 Resources</h2>
+                <h2>Resources</h2>
                 <div class="links">
-                    <a href="#" class="btn" title="论文PDF">📄 论文全文 (PDF)</a>
-                    <a href="#" class="btn btn-secondary" title="代码仓库">💻 代码 (GitHub)</a>
-                    <a href="#" class="btn btn-secondary" title="数据集">📊 数据集</a>
-                    <a href="#" class="btn btn-secondary" title="Slides">🎤 演讲稿</a>
+                    <a href="#" class="btn" title="Paper PDF">📄 Paper (PDF)</a>
+                    <a href="#" class="btn btn-secondary" title="Code Repository">💻 Code (GitHub)</a>
+                    <a href="#" class="btn btn-secondary" title="Dataset">📊 Dataset</a>
+                    <a href="#" class="btn btn-secondary" title="Slides">🎤 Slides</a>
                 </div>
                 <p style="margin-top: 30px; text-align: center; color: #7f8c8d;">
-                    资源链接将在论文发表后更新。<br>
-                    Resources will be updated after the paper is published.
+                    Links will be updated after the paper is published.
                 </p>
             </section>
 
             <!-- 引用 -->
-            <section class="section">
-                <h2>📖 引用 Citation</h2>
-                <p>如果您在研究中使用了本论文，请按以下格式引用：</p>
+                        <section class="section">
+                                <h2>Citation</h2>
+                                <p>If you use this work, please cite:</p>
                 <div class="citation">
 @inproceedings{iemi-cps-sok-2026,
   title={SoK: Security of Cyber-Physical Systems Under Intentional Electromagnetic Interference Attacks},
@@ -479,13 +477,13 @@
 
             <!-- 致谢 -->
             <section class="section">
-                <h2>🙏 致谢 Acknowledgments</h2>
-                <p>感谢USENIX Security 2026的接受，以及所有贡献者和评审专家的宝贵意见。</p>
-                <p>特别感谢：</p>
+                <h2>Acknowledgments</h2>
+                <p>We thank USENIX Security 2026 for acceptance and all contributors and reviewers for their valuable feedback.</p>
+                <p>Special thanks to:</p>
                 <ul style="margin-left: 20px; margin-bottom: 15px;">
-                    <li>各合作机构提供的支持</li>
-                    <li>实验参与者的配合</li>
-                    <li>资助机构的支持</li>
+                    <li>Partner institutions for support</li>
+                    <li>Experiment participants</li>
+                    <li>Funding agencies</li>
                 </ul>
             </section>
         </div>
