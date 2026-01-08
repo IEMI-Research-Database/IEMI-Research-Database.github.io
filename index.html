@@ -470,6 +470,15 @@
             overflow-x: auto;
         }
 
+        .table-scroll {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        .search-results table {
+            min-width: 1200px;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
@@ -951,23 +960,25 @@
 
             resultsDiv.className = 'search-results' + (shouldCollapse ? ' collapsed' : '');
             resultsDiv.innerHTML = `
-                <table aria-label="IEMI papers">
-                    <thead>
-                        <tr>
-                            <th>Target System</th>
-                            <th>Target Sampler</th>
-                            <th>Attack Details</th>
-                            <th>Attacker Hardware Assumptions</th>
-                            <th>Effects & Amplitude</th>
-                            <th>Paper Title</th>
-                            <th>Venue</th>
-                            <th>Year</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${rows}
-                    </tbody>
-                </table>
+                <div class="table-scroll">
+                    <table aria-label="IEMI papers">
+                        <thead>
+                            <tr>
+                                <th>Target System</th>
+                                <th>Target Sampler</th>
+                                <th>Attack Details</th>
+                                <th>Attacker Hardware Assumptions</th>
+                                <th>Effects & Amplitude</th>
+                                <th>Paper Title</th>
+                                <th>Venue</th>
+                                <th>Year</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${rows}
+                        </tbody>
+                    </table>
+                </div>
             `;
 
             if (shouldCollapse) {
