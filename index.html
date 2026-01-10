@@ -919,32 +919,65 @@
         const resultsDiv = document.getElementById('search-results');
         const summaryDiv = document.getElementById('search-summary');
 
-        function renderOptions() {
-            const systems = Array.from(new Set(papers.map(p => p.targetSystem))).sort();
-            const samplers = Array.from(new Set(papers.map(p => p.targetSampler))).sort();
-            // Extract unique application values from papers array
-            const applications = Array.from(new Set(papers.map(p => p.application).filter(a => a))).sort();
+        function renderOptions(filterApplication = '', filterSystem = '', filterSampler = '') {
+            // Filter papers based on current selections
+            let filteredPapers = papers;
+            if (filterApplication) {
+                filteredPapers = filteredPapers.filter(p => p.application === filterApplication);
+            }
+            if (filterSystem) {
+                filteredPapers = filteredPapers.filter(p => p.targetSystem === filterSystem);
+            }
+            if (filterSampler) {
+                filteredPapers = filteredPapers.filter(p => p.targetSampler === filterSampler);
+            }
 
-            systems.forEach(system => {
-                const opt = document.createElement('option');
-                opt.value = system;
-                opt.textContent = system;
-                systemSelect.appendChild(opt);
-            });
+            // Extract unique values from filtered papers
+            const systems = Array.from(new Set(filteredPapers.map(p => p.targetSystem))).sort();
+            const samplers = Array.from(new Set(filteredPapers.map(p => p.targetSampler))).sort();
+            const applications = Array.from(new Set(filteredPapers.map(p => p.application).filter(a => a))).sort();
 
-            samplers.forEach(sampler => {
-                const opt = document.createElement('option');
-                opt.value = sampler;
-                opt.textContent = sampler;
-                samplerSelect.appendChild(opt);
-            });
+            // Store current selections
+            const currentApplication = applicationSelect.value;
+            const currentSystem = systemSelect.value;
+            const currentSampler = samplerSelect.value;
 
+            // Clear and rebuild Application dropdown
+            applicationSelect.innerHTML = '<option value="">Any</option>';
             applications.forEach(application => {
                 const opt = document.createElement('option');
                 opt.value = application;
                 opt.textContent = application;
+                if (application === currentApplication) opt.selected = true;
                 applicationSelect.appendChild(opt);
             });
+
+            // Clear and rebuild System dropdown
+            systemSelect.innerHTML = '<option value="">Any</option>';
+            systems.forEach(system => {
+                const opt = document.createElement('option');
+                opt.value = system;
+                opt.textContent = system;
+                if (system === currentSystem) opt.selected = true;
+                systemSelect.appendChild(opt);
+            });
+
+            // Clear and rebuild Sampler dropdown
+            samplerSelect.innerHTML = '<option value="">Any</option>';
+            samplers.forEach(sampler => {
+                const opt = document.createElement('option');
+                opt.value = sampler;
+                opt.textContent = sampler;
+                if (sampler === currentSampler) opt.selected = true;
+                samplerSelect.appendChild(opt);
+            });
+        }
+
+        function updateDropdowns() {
+            const application = applicationSelect.value;
+            const system = systemSelect.value;
+            const sampler = samplerSelect.value;
+            renderOptions(application, system, sampler);
         }
 
         function renderTable(data, isSearched = false) {
@@ -1053,6 +1086,20 @@
             summaryDiv.textContent = '';
             resultsDiv.innerHTML = '';
             resultsDiv.classList.remove('collapsed');
+            renderOptions(); // Reset all dropdowns to show all options
+        });
+
+        // Add cascading dropdown behavior
+        applicationSelect.addEventListener('change', () => {
+            updateDropdowns();
+        });
+
+        systemSelect.addEventListener('change', () => {
+            updateDropdowns();
+        });
+
+        samplerSelect.addEventListener('change', () => {
+            updateDropdowns();
         });
 
         renderOptions();
