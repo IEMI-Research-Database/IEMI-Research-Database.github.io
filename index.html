@@ -688,50 +688,73 @@
                 
                 <p>A target sampler <em>S[·]</em> converts an input signal <em>V(t)</em> that the sampler intends to measure into discrete data samples. This process is orchestrated by a clock signal <em>C(t)</em> which sets the sampling rate, and a reference signal <em>R(t)</em> which provides a reference for the measurement. The acquired sample <em>Samp[n]</em> at time <em>t</em> is:</p>
                 
-                <p style="text-align: center; font-style: italic; background: #f5f5f5; padding: 15px; border-radius: 5px;">
-                    Samp[n] = S[V(t), C(t), R(t)]
-                </p>
+                <div style="text-align: center; background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <p style="font-style: italic; margin: 0;">
+                        Samp[n] = S[V(t), C(t), R(t)]&nbsp;&nbsp;&nbsp;&nbsp;(Eq. 1)
+                    </p>
+                </div>
 
                 <p>A target system is a software-hardware entity whose behavior depends on the output of the target sampler, modeled as a finite-state machine. A function <em>P[·]</em> represents the state transitions, which maps the current input and the previous state to the next state. The current state can then be formulated recursively as:</p>
                 
-                <p style="text-align: center; font-style: italic; background: #f5f5f5; padding: 15px; border-radius: 5px;">
-                    State[n] = P[State[n-1], Samp[n]]
-                </p>
+                <div style="text-align: center; background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <p style="font-style: italic; margin: 0;">
+                        State[n] = P[State[n-1], Samp[n]]&nbsp;&nbsp;&nbsp;&nbsp;(Eq. 2)
+                    </p>
+                </div>
 
                 <p>In an end-to-end IEMI attack, the adversary causes changes in at least one of V(t), C(t), or R(t) to modify Samp[n] to be an erroneous value, <em>Samp̂[n]</em>, forcing the state machine to enter an insecure state <em>Statê[n]</em>.</p>
 
                 <h3>IEMI Coupling</h3>
-                <p><strong>IEMI Coupling</strong> is the process of delivering electromagnetic energy generated on the adversary's end to targets to induce analog voltages that change target sampler inputs. The fundamental mechanisms for changing V(t), C(t), R(t) are the same. The input voltage signal under IEMI attacks is:</p>
+                <p><strong>IEMI Coupling</strong> is the process of delivering electromagnetic energy generated on the adversary's end to targets to induce analog voltages that change target sampler inputs. The fundamental mechanisms for changing <em>V(t)</em>, <em>C(t)</em>, and <em>R(t)</em> are the same. The input voltage signal under IEMI attacks can be modeled as:</p>
                 
-                <p style="text-align: center; font-style: italic; background: #f5f5f5; padding: 15px; border-radius: 5px;">
-                    V(t) = V<sub>true</sub>(t) + T(V<sub>adv</sub>(t))
-                </p>
+                <div style="text-align: center; background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <p style="font-style: italic; margin: 0;">
+                        V(t) = V<sub>true</sub>(t) + T(V<sub>adv</sub>(t))&nbsp;&nbsp;&nbsp;&nbsp;(Eq. 3)
+                    </p>
+                </div>
 
-                <p><em>V<sub>true</sub>(t)</em> is the authentic electrical voltage on the input without IEMI. The attacker-induced malicious voltage is modeled by <em>V<sub>adv</sub>(t)</em>—the IEMI source signal sent from the adversary's antenna—subjected to the transfer function <em>T(·)</em> of the IEMI coupling process.</p>
+                <p>Here, <em>V<sub>true</sub>(t)</em> is the authentic electrical voltage on the input without IEMI. The attacker-induced malicious voltage is modeled by <em>V<sub>adv</sub>(t)</em>—the IEMI source signal sent from the adversary's antenna—subjected to the transfer function <em>T(·)</em> of the IEMI coupling process.</p>
 
-                <p>The function <em>T(·)</em> is characterized by its frequency response to the EM energy generation by the adversary and embodies the impact of several target-specific factors, such as the distance and angle between the adversary and the target, the casing material of the target hardware, and other environmental factors.</p>
+                <p>The transfer function <em>T(·)</em> is characterized by its frequency response to the EM energy generation by the adversary and embodies the impact of several target-specific factors, such as the distance and angle between the adversary and the target, the casing material of the target hardware, and other environmental factors. As shown in <strong>Figure 2</strong>, the coupling mechanism demonstrates how adversarial EM signals propagate and couple with the target system:</p>
+
+                <div style="text-align: center; margin: 20px 0;">
+                    <img src="imgaes/coupling_sample2025v2.pdf" alt="Figure 2: IEMI Coupling Mechanism Diagram" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 5px; padding: 10px;">
+                    <p style="font-size: 0.9em; color: #666; margin-top: 10px;"><strong>Figure 2:</strong> IEMI Coupling Sample: Physical channels for electromagnetic energy delivery to target samplers</p>
+                </div>
 
                 <h3>Sample Manipulation</h3>
-                <p><strong>Sample Manipulation</strong> is the process of designing the IEMI's time-varying waveform based on the malicious voltages that the adversary wants the target samplers to receive, which would result in manipulated data in the software space. This consists of:</p>
+                <p><strong>Sample Manipulation</strong> is the process of designing the IEMI's time-varying waveform based on the malicious voltages that the adversary wants the target samplers to receive, which would result in manipulated data in the software space. This consists of three key elements:</p>
                 
                 <ul style="margin-left: 20px; margin-bottom: 15px;">
                     <li><strong>State-Sample Mapping:</strong> Reverse engineering the working principle of the target system to map desired state transitions to required samples</li>
-                    <li><strong>Timing Controls:</strong> Aligning the induced IEMI signals with internal timing of the target</li>
-                    <li><strong>Amplitude Controls:</strong> Tricking the target sampler into perceiving desired values</li>
+                    <li><strong>Timing Controls (ℑ<sub>T</sub>):</strong> Aligning the induced IEMI signals with internal timing of the target</li>
+                    <li><strong>Amplitude Controls (ℑ<sub>A</sub>):</strong> Modulating IEMI signal amplitude to trick the target sampler into perceiving desired values</li>
                 </ul>
 
                 <p>Reverse engineering enables the adversary to find a state-sample mapping function <em>R(·)</em> that predicts a viable sequence of required samples:</p>
                 
-                <p style="text-align: center; font-style: italic; background: #f5f5f5; padding: 15px; border-radius: 5px;">
-                    [Samp[1], ..., Samp[n]] = R(State[n], State[0])
-                </p>
+                <div style="text-align: center; background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <p style="font-style: italic; margin: 0;">
+                        [Samp[1], ..., Samp[n]] = R(State[n], State[0])&nbsp;&nbsp;&nbsp;&nbsp;(Eq. 4)
+                    </p>
+                </div>
 
-                <p>The IEMI signal that an adversary needs to generate can be modeled as a baseband signal modulated onto a carrier signal with adjustable phases and amplitudes for timing and amplitude control. In practice, the IEMI signal's amplitude and frequency ranges are constrained by the maximum output power and frequency of the EM modulation and generation device.</p>
+                <p>The IEMI signal that an adversary generates can be modeled as a baseband signal modulated onto a carrier signal:</p>
+                
+                <div style="text-align: center; background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <p style="font-style: italic; margin: 0;">
+                        V<sub>adv</sub>(t) = A(t) · M<sub>b</sub>(t) · cos(2πf<sub>c</sub>t + φ(t))&nbsp;&nbsp;&nbsp;&nbsp;(Eq. 5)
+                    </p>
+                </div>
+
+                <p>where <em>A(t)</em> is the amplitude control envelope, <em>M<sub>b</sub>(t)</em> is the baseband modulation, <em>f<sub>c</sub></em> is the carrier frequency, and <em>φ(t)</em> is the phase modulation for timing control. In practice, the IEMI signal's amplitude and frequency ranges are constrained by the maximum output power and frequency of the EM modulation and generation device.</p>
 
                 <h3>IEMI Threat Models</h3>
-                <p>Factors of common IEMI threat models map to the parameters in the coupling, sampling, and state transition functions. Physical deployment conditions that affect coupling feasibility are abstracted into the coupling channels. For example, metal enclosures and better grounding generally result in lower transfer efficiencies compared to plastic devices without proper grounding, increasing attack difficulties.</p>
+                <p>Factors of common IEMI threat models map to the parameters in the coupling, sampling, and state transition functions. Physical deployment conditions that affect coupling feasibility are abstracted into the coupling channels characterized by transfer function <em>T(·)</em>. For example, metal enclosures and better grounding generally result in lower transfer efficiencies compared to plastic devices without proper grounding (victimEnclosure ∈ {Metal, Plastic, None, Decapsulated}), increasing attack difficulties.</p>
 
-                <p>The target's operating state during injection maps to the clock and sampling process, where the clock signal determines the sampling edges, and implementation-specific decision thresholds can be represented by extending the sampling function with additional parameters when needed. Finally, an attacker's knowledge of target timing corresponds to what the attacker can infer about the target's internal sampling schedule and state transition schemes.</p>
+                <p>The target's operating state during injection maps to the clock and sampling process. The clock signal <em>C(t)</em> determines the sampling edges, and implementation-specific decision thresholds can be represented by extending the sampling function <em>S[·]</em> with additional parameters when needed. Furthermore, attack objectives (attackObjective ∈ {Controlling, Disrupting}) and coupling paths (couplingPath ∈ {EM, E, M, Wired}) define the threat model's scope.</p>
+
+                <p>Finally, an attacker's knowledge of target timing corresponds to what the attacker can infer about the target's internal sampling schedule and state transition schemes. This fundamental framework enables systematic analysis of how attackers overcome physical separation, timing constraints, and system defenses to achieve their objectives through electromagnetic interference.</p>
 
             </section>
 
