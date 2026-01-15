@@ -504,6 +504,32 @@
             border-bottom: 1px solid #ddd;
         }
 
+        .observation-box {
+            border: 2px solid #3498db;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            background: #f8fbff;
+        }
+
+        .observation-box h4 {
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        .observation-box p {
+            margin: 12px 0;
+            line-height: 1.7;
+            color: #333;
+        }
+
+        .observation-box strong {
+            color: #2c3e50;
+        }
+
         table tr:hover {
             background: #f5f5f5;
         }
@@ -703,26 +729,52 @@
                 </ul>
             </section>
 
-            <!-- 主要发现 -->
+            <!-- 主要观察 -->
             <section class="section">
-                <h2>Key Findings</h2>
-                <h3>1. Physical-Layer Vulnerabilities</h3>
-                <p>CPS physical layers (sensors, networks) are widely susceptible to IEMI; many commercial sensors lack robust EMC design.</p>
+                <h2>Key Observations</h2>
 
-                <h3>2. Defense Categories</h3>
-                <p>Defenses can be grouped into three categories:</p>
-                <ul style="margin-left: 20px; margin-bottom: 15px;">
-                    <li><strong>Passive protection</strong>: Shielding, isolation, grounding</li>
-                    <li><strong>Active protection</strong>: Detection and recovery algorithms</li>
-                    <li><strong>System-level protection</strong>: Redundancy and fault tolerance</li>
-                </ul>
-                <h3>3. Defense Gaps</h3>
-                <p>Current defenses fall short in:</p>
-                <ul style="margin-left: 20px; margin-bottom: 15px;">
-                    <li>Lack of standardized security evaluation frameworks</li>
-                    <li>Poor cross-domain coordination of defense strategies</li>
-                    <li>Cost versus security trade-off challenges</li>
-                </ul>
+                <div class="observation-box">
+                    <h4>Key Observation 1</h4>
+                    <p>Most existing IEMI attacks still demonstrate physical access or proximity to targets. This constraint mostly arises from their proof-of-concept research scope.</p>
+                    <p><strong>Open Question:</strong> Despite the prevailing belief that employing advanced amplifiers and antennas can increase attack distance, how practical is this assumption, and how can researchers and manufacturers validate it?</p>
+                </div>
+
+                <div class="observation-box">
+                    <h4>Key Observation 2</h4>
+                    <p>A wide variety of sampler structures, each deployable on different CPS devices, have been targeted. The main factors influencing the choice of targets include their accessibility, whether they are mobile or stationary, and the magnitude of their safety impact.</p>
+                    <p><strong>Open Question:</strong> How can target sampler susceptibility observed in easy-to-access systems be extrapolated to hard-to-access or even unseen systems for IEMI threat prediction?</p>
+                </div>
+
+                <div class="observation-box">
+                    <h4>Key Observation 3</h4>
+                    <p>Empirical device-dependent testing of the effectiveness of different electromagnetic waveforms and frequencies dominates the current research landscape.</p>
+                    <p><strong>Open Question:</strong> How challenging and beneficial would it be to pursue more rigorous quantitative characterization that builds upon modeling and simulation of the target system's electrical resonance characteristics?</p>
+                </div>
+
+                <div class="observation-box">
+                    <h4>Key Observation 4</h4>
+                    <p>Achieving absolute timing control that accurately aligns IEMI with system internal timing to achieve controlling attacks is challenging and relatively rare in existing works.</p>
+                    <p><strong>Open Question:</strong> How can IEMI attacks be more integrated with EM side-channel attack methodologies to design advanced feedback control loops for precise timing control?</p>
+                </div>
+
+                <div class="observation-box">
+                    <h4>Key Observation 5</h4>
+                    <p>Little work demonstrated how to use IEMI to precisely change voltages in non-physical access threat models due to the lack of voltage information feedback channels.</p>
+                    <p><strong>Open Question:</strong> What strategies could exist to non-invasively probe the internal voltages of target sampler inputs, especially against moving targets?</p>
+                </div>
+
+                <div class="observation-box">
+                    <h4>Key Observation 6</h4>
+                    <p>Hardware-based defenses, while extensively discussed, face significant engineering trade-offs. This results in a lack of experimental validation for most proposed defenses due to the challenges of hardware manufacturing.</p>
+                    <p><strong>Open Question:</strong> How can security researchers quantitatively evaluate the trade-offs and possibly validate the strategies on potential simulation platforms?</p>
+                </div>
+
+                <div class="observation-box">
+                    <h4>Key Observation 7</h4>
+                    <p>Existing defenses often focus on system-specific countermeasures that detect or downgrade attacks. There is a need for proactive strategies that can prevent sample manipulation from occurring in the first place.</p>
+                    <p><strong>Open Question:</strong> How can we design proactive strategies for preventing sample manipulation and make the defenses applicable across different devices and applications?</p>
+                </div>
+
             </section>
 
             <!-- 推荐方向 -->
