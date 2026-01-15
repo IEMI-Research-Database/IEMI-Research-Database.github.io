@@ -217,23 +217,43 @@
 
         .author {
             text-align: center;
+            flex: 0 1 calc(20% - 15px);
+            min-width: 150px;
         }
 
         .author-name {
             font-weight: bold;
             color: #2c3e50;
+            margin-top: 10px;
         }
 
         .author-affiliation {
-            font-size: 0.9em;
+            font-size: 0.85em;
             color: #7f8c8d;
+            margin: 5px 0;
+        }
+
+        .author-links {
+            font-size: 0.9em;
+            margin-top: 8px;
+        }
+
+        .author-links a {
+            margin: 0 4px;
+            color: #3498db;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .author-links a:hover {
+            color: #2980b9;
         }
 
         .author-avatar {
             width: 120px;
-            height: 120px;
+            height: 150px;
             border-radius: 8px;
-            margin: 0 auto 12px;
+            margin: 0 auto;
             object-fit: cover;
             box-shadow: 0 2px 8px rgba(0,0,0,0.12);
         }
@@ -576,7 +596,7 @@
                 <span>·</span>
                 <a href="mailto:wyxu@zju.edu.cn">Wenyuan Xu</a><span class="aff-sup">3</span>
             </p>
-            <p class="header-affiliations">1 The Hong Kong Polytechnic University · 2 The Hong Kong University of Science and Technology(Guangzhou) · 3 Zhejiang University · 4 Northeastern University</p>
+            <p class="header-affiliations">1 The Hong Kong Polytechnic University · 2 HKUST(GZ) · 3 Zhejiang University · 4 Northeastern University</p>
             <div class="header-logos">
                 <img class="header-logo" src="imgaes\polyu-logo.png" alt="The Hong Kong Polytechnic University">
                 <img class="header-logo" src="imgaes/hkustgz-logo.png" alt="HKUST Guangzhou">
@@ -834,60 +854,87 @@
                 <h2>Authors</h2>
                 <div class="authors">
                     <div class="author">
-                        <img class="author-avatar" src="imgaes\Qinhong Jiang.jpg" alt="Qinhong Jiang">
+                        <img class="author-avatar" src="imgaes/Qinhong Jiang.jpg" alt="Qinhong Jiang">
                         <div class="author-name">Qinhong Jiang</div>
                         <div class="author-affiliation">The Hong Kong Polytechnic University</div>
-                        <div><a href="mailto:qinhong.jiang@polyu.edu.hk" style="color:#3498db;">qinhong.jiang@polyu.edu.hk</a></div>
+                        <div class="author-links">
+                            <a href="mailto:qinhong.jiang@polyu.edu.hk" title="Email">✉</a>
+                            <a href="#" title="Homepage">🔗</a>
+                        </div>
                     </div>
                     <div class="author">
                         <img class="author-avatar" src="imgaes/Yan Long.png" alt="Yan Long">
                         <div class="author-name">Yan Long</div>
-                        <div class="author-affiliation">The Hong Kong University of Science and Technology (Guangzhou)</div>
-                        <div><a href="mailto:y.long@northeastern.edu" style="color:#3498db;">y.long@northeastern.edu</a></div>
+                        <div class="author-affiliation">HKUST(GZ)</div>
+                        <div class="author-links">
+                            <a href="mailto:y.long@northeastern.edu" title="Email">✉</a>
+                            <a href="#" title="Homepage">🔗</a>
+                        </div>
                     </div>
                     <div class="author">
                         <img class="author-avatar" src="imgaes/Youqian Zhang.jpg" alt="Youqian Zhang">
                         <div class="author-name">Youqian Zhang</div>
                         <div class="author-affiliation">The Hong Kong Polytechnic University</div>
-                        <div><a href="mailto:you-qian.zhang@polyu.edu.hk" style="color:#3498db;">you-qian.zhang@polyu.edu.hk</a></div>
+                        <div class="author-links">
+                            <a href="mailto:you-qian.zhang@polyu.edu.hk" title="Email">✉</a>
+                            <a href="#" title="Homepage">🔗</a>
+                        </div>
                     </div>
                     <div class="author">
-                        <img class="author-avatar" src="imgaes/Yan Chen.jpg" alt="Chen Yan">
-                        <div class="author-name">Chen Yan</div>
+                        <img class="author-avatar" src="imgaes/Yan Chen.jpg" alt="Yan Chen">
+                        <div class="author-name">Yan Chen</div>
                         <div class="author-affiliation">Zhejiang University</div>
-                        <div><a href="mailto:yanchen@zju.edu.cn" style="color:#3498db;">yanchen@zju.edu.cn</a></div>
+                        <div class="author-links">
+                            <a href="mailto:yanchen@zju.edu.cn" title="Email">✉</a>
+                            <a href="#" title="Homepage">🔗</a>
+                        </div>
                     </div>
                     <div class="author">
                         <img class="author-avatar" src="imgaes/Xiaoyu Ji.jpg" alt="Xiaoyu Ji">
                         <div class="author-name">Xiaoyu Ji</div>
                         <div class="author-affiliation">Zhejiang University</div>
-                        <div><a href="mailto:xji@zju.edu.cn" style="color:#3498db;">xji@zju.edu.cn</a></div>
+                        <div class="author-links">
+                            <a href="mailto:xji@zju.edu.cn" title="Email">✉</a>
+                            <a href="#" title="Homepage">🔗</a>
+                        </div>
                     </div>
                     <div class="author">
                         <img class="author-avatar" src="imgaes/Xiapu Luo.jpg" alt="Xiapu Luo">
                         <div class="author-name">Xiapu Luo</div>
                         <div class="author-affiliation">The Hong Kong Polytechnic University</div>
-                        <div><a href="mailto:csxluo@comp.polyu.edu.hk" style="color:#3498db;">csxluo@comp.polyu.edu.hk</a></div>
+                        <div class="author-links">
+                            <a href="mailto:csxluo@comp.polyu.edu.hk" title="Email">✉</a>
+                            <a href="#" title="Homepage">🔗</a>
+                        </div>
                     </div>
                     <div class="author">
                         <img class="author-avatar" src="imgaes/Kevin Fu.jpg" alt="Kevin Fu">
                         <div class="author-name">Kevin Fu</div>
                         <div class="author-affiliation">Northeastern University</div>
-                        <div><a href="mailto:k.fu@northeastern.edu" style="color:#3498db;">k.fu@northeastern.edu</a></div>
+                        <div class="author-links">
+                            <a href="mailto:k.fu@northeastern.edu" title="Email">✉</a>
+                            <a href="#" title="Homepage">🔗</a>
+                        </div>
                     </div>
                     <div class="author">
                         <img class="author-avatar" src="imgaes/Jiannong Cao.jpg" alt="Jiannong Cao">
                         <div class="author-name">Jiannong Cao</div>
                         <div class="author-affiliation">The Hong Kong Polytechnic University</div>
-                        <div><a href="mailto:jiannong.cao@polyu.edu.hk" style="color:#3498db;">jiannong.cao@polyu.edu.hk</a></div>
+                        <div class="author-links">
+                            <a href="mailto:jiannong.cao@polyu.edu.hk" title="Email">✉</a>
+                            <a href="#" title="Homepage">🔗</a>
+                        </div>
                     </div>
                     <div class="author">
                         <img class="author-avatar" src="imgaes/Wenyuan Xu.jpg" alt="Wenyuan Xu">
                         <div class="author-name">Wenyuan Xu</div>
                         <div class="author-affiliation">Zhejiang University</div>
-                        <div><a href="mailto:wyxu@zju.edu.cn" style="color:#3498db;">wyxu@zju.edu.cn</a></div>
+                        <div class="author-links">
+                            <a href="mailto:wyxu@zju.edu.cn" title="Email">✉</a>
+                            <a href="#" title="Homepage">🔗</a>
+                        </div>
                     </div>
-                    </div>
+                </div>
             </section>
 
             <!-- 资源 -->
