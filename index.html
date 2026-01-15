@@ -289,7 +289,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 12px;
-            align-items: flex-end;
+            align-items: center;
             margin: 20px 0 10px;
         }
 
@@ -308,13 +308,6 @@
             border-radius: 6px;
             background: white;
             box-shadow: 0 1px 2px rgba(0,0,0,0.04);
-        }
-
-        .search-actions {
-            display: flex;
-            gap: 10px;
-            align-items: flex-end;
-            flex-wrap: wrap;
         }
 
         .search-results.collapsed tbody tr:nth-child(n+6) {
@@ -654,7 +647,7 @@
             <!-- 数据库检索 -->
             <section class="section" id="paper-database">
                 <h2>IEMI Research Database</h2>
-                <p>Filter surveyed papers by target system or target sampler, or submit new data to expand the dataset.</p>
+                <p>Filter and explore papers by application, target system, or target sampler. Submit new data to expand the dataset, or report errors for corrections.</p>
 
                 <div class="search-controls">
                     <label for="filter-application">Application
@@ -672,12 +665,10 @@
                             <option value="">Any</option>
                         </select>
                     </label>
-                    <div class="search-actions">
-                        <button id="search-btn" class="btn" type="button">Search</button>
-                        <button id="reset-btn" class="btn btn-secondary" type="button">Reset</button>
-                        <a id="submit-btn" class="btn btn-secondary" href="mailto:qinhong.jiang@polyu.edu.hk?subject=IEMI%20Research%20Database%20Submission" title="Submit new paper data"><span class="btn-icon">📤</span>Submit Data</a>
-                        <a id="report-btn" class="btn btn-secondary" href="mailto:qinhong.jiang@polyu.edu.hk?subject=IEMI%20Database%20Error%20Report" title="Report data errors or corrections"><span class="btn-icon">🔧</span>Report Error</a>
-                    </div>
+                    <button id="search-btn" class="btn" type="button">Search</button>
+                    <button id="reset-btn" class="btn btn-secondary" type="button">Reset</button>
+                    <a id="submit-btn" class="btn btn-secondary" href="mailto:qinhong.jiang@polyu.edu.hk?subject=IEMI%20Research%20Database%20Submission" title="Submit new paper data"><span class="btn-icon">📤</span>Submit and Contribute to Database</a>
+                    <a id="report-btn" class="btn btn-secondary" href="mailto:qinhong.jiang@polyu.edu.hk?subject=IEMI%20Database%20Error%20Report" title="Report data errors or corrections"><span class="btn-icon">🔧</span>Report Error</a>
                 </div>
 
                 <div id="search-summary" class="search-summary"></div>
