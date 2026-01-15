@@ -697,14 +697,19 @@
             <!-- 研究动机 -->
             <section class="section">
                 <h2>Motivation</h2>
-                <p>Cyber-physical systems (CPS) underpin critical infrastructure including power grids, transportation, industrial control, and medical devices. These systems increasingly face electromagnetic interference threats. Intentional electromagnetic interference (IEMI) can lead to:</p>
-                <ul style="margin-left: 20px; margin-bottom: 15px;">
-                    <li>✗ Sensor malfunctions or data tampering</li>
-                    <li>✗ Control signal disruption</li>
-                    <li>✗ System outages or unsafe operations</li>
-                    <li>✗ Severe safety and economic impacts</li>
-                </ul>
-                <p>Despite growing IEMI threats, systematic study of CPS defenses remains limited. Our goal is to provide a comprehensive knowledge framework for researchers, engineers, and decision makers.</p>
+                <p>Electromagnetic interference has long been a concern in system design, but the growing threat of IEMI attacks against interconnected cyber-physical systems has made this issue increasingly urgent. We identify several key gaps that motivate this systematization.</p>
+                
+                <h3>Inherent Vulnerability</h3>
+                <p>Fundamental electromagnetic principles render modern electronic circuits inherently susceptible to EMI, making most cyber-physical systems theoretically vulnerable to IEMI attacks. However, the factors that determine why some targets are more easily exploitable than others remain poorly understood.</p>
+                
+                <h3>Energy-Security Trade-off</h3>
+                <p>The push toward low-power and energy-efficient designs, central to mobile and IoT systems, increases susceptibility to IEMI by reducing operating voltages and noise margins. How to effectively protect future ultra-low-power and highly miniaturized electronics remains an open challenge.</p>
+                
+                <h3>Evolving Threat Landscape</h3>
+                <p>Reported and suspected IEMI attacks have grown rapidly in recent years, driven by the widespread deployment of vulnerable devices and the availability of low-cost, portable IEMI equipment. This trend is especially concerning for critical cyber-physical infrastructure, such as autonomous vehicles, industrial automation, and medical systems. Moreover, attacks are shifting from coarse disruption to more precise EMFI and EMSI techniques, highlighting the need for systematic characterization of feasible targets and attack impacts.</p>
+                
+                <h3>Imbalanced Attack/Defense Efforts</h3>
+                <p>IEMI attacks are often significantly easier and cheaper to execute than to defend against, particularly at the physical layer. Defenders must protect complex systems against a broad and evolving attack surface while preserving functionality, leading to a research landscape dominated by attack demonstrations. A key missing piece is effective modeling of IEMI attacks to enable systematic defense design and evaluation.</p>
             </section>
 
             <!-- IEMI问题建模 -->
