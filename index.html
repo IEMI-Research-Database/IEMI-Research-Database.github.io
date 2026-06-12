@@ -26,6 +26,11 @@
         <meta name="twitter:description" content="A searchable IEMI research database with 80+ papers, threat modeling insights, and CPS-focused security analysis.">
         <meta name="twitter:image" content="https://iemi-research-database.github.io/imgaes/coupling_sample2025v2.jpg">
     <meta name="theme-color" content="#3498db">
+    <!-- KaTeX for academic-quality formula rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body, {delimiters: [{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}], throwOnError: false});"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
@@ -903,18 +908,16 @@
                 
                 <p>A target sampler <em>S[·]</em> converts an input signal <em>V(t)</em> that the sampler intends to measure into discrete data samples. This process is orchestrated by a clock signal <em>C(t)</em> which sets the sampling rate, and a reference signal <em>R(t)</em> which provides a reference for the measurement. The acquired sample <em>Samp[n]</em> at time <em>t</em> is:</p>
                 
-                <div style="text-align: center; background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0;">
-                    <p style="font-style: italic; margin: 0;">
-                        Samp[n] = S[V(t), C(t), R(t)]&nbsp;&nbsp;&nbsp;&nbsp;(Eq. 1)
-                    </p>
+                <div class="eq-block">
+                    <span>\(\text{Samp}[n] = S[V(t),\, C(t),\, R(t)]\)</span>
+                    <span class="eq-number">(1)</span>
                 </div>
 
                 <p>A target system is a software-hardware entity whose behavior depends on the output of the target sampler, modeled as a finite-state machine. A function <em>P[·]</em> represents the state transitions, which maps the current input and the previous state to the next state. The current state can then be formulated recursively as:</p>
                 
-                <div style="text-align: center; background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0;">
-                    <p style="font-style: italic; margin: 0;">
-                        State[n] = P[State[n-1], Samp[n]]&nbsp;&nbsp;&nbsp;&nbsp;(Eq. 2)
-                    </p>
+                <div class="eq-block">
+                    <span>\(\text{State}[n] = P[\text{State}[n{-}1],\, \text{Samp}[n]]\)</span>
+                    <span class="eq-number">(2)</span>
                 </div>
 
                 <p>In an end-to-end IEMI attack, the adversary causes changes in at least one of V(t), C(t), or R(t) to modify Samp[n] to be an erroneous value, <em>Samp̂[n]</em>, forcing the state machine to enter an insecure state <em>Statê[n]</em>.</p>
@@ -922,10 +925,9 @@
                 <h3>IEMI Coupling</h3>
                 <p><strong>IEMI Coupling</strong> is the process of delivering electromagnetic energy generated on the adversary's end to targets to induce analog voltages that change target sampler inputs. The fundamental mechanisms for changing <em>V(t)</em>, <em>C(t)</em>, and <em>R(t)</em> are the same. The input voltage signal under IEMI attacks can be modeled as:</p>
                 
-                <div style="text-align: center; background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0;">
-                    <p style="font-style: italic; margin: 0;">
-                        V(t) = V<sub>true</sub>(t) + T(V<sub>adv</sub>(t))&nbsp;&nbsp;&nbsp;&nbsp;(Eq. 3)
-                    </p>
+                <div class="eq-block">
+                    <span>\(V(t) = V_{\mathrm{true}}(t) + T(V_{\mathrm{adv}}(t))\)</span>
+                    <span class="eq-number">(3)</span>
                 </div>
 
                 <p>Here, <em>V<sub>true</sub>(t)</em> is the authentic electrical voltage on the input without IEMI. The attacker-induced malicious voltage is modeled by <em>V<sub>adv</sub>(t)</em>—the IEMI source signal sent from the adversary's antenna—subjected to the transfer function <em>T(·)</em> of the IEMI coupling process.</p>
@@ -948,18 +950,16 @@
 
                 <p>Reverse engineering enables the adversary to find a state-sample mapping function <em>R(·)</em> that predicts a viable sequence of required samples:</p>
                 
-                <div style="text-align: center; background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0;">
-                    <p style="font-style: italic; margin: 0;">
-                        [Samp[1], ..., Samp[n]] = R(State[n], State[0])&nbsp;&nbsp;&nbsp;&nbsp;(Eq. 4)
-                    </p>
+                <div class="eq-block">
+                    <span>\([\text{Samp}[1],\, \ldots,\, \text{Samp}[n]] = R(\text{State}[n],\, \text{State}[0])\)</span>
+                    <span class="eq-number">(4)</span>
                 </div>
 
                 <p>The IEMI signal that an adversary generates can be modeled as a baseband signal modulated onto a carrier signal:</p>
                 
-                <div style="text-align: center; background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0;">
-                    <p style="font-style: italic; margin: 0;">
-                        V<sub>adv</sub>(t) = A(t) · M<sub>b</sub>(t) · cos(2πf<sub>c</sub>t + φ(t))&nbsp;&nbsp;&nbsp;&nbsp;(Eq. 5)
-                    </p>
+                <div class="eq-block">
+                    <span>\(V_{\mathrm{adv}}(t) = A(t) \cdot M_b(t) \cdot \cos(2\pi f_c t + \varphi(t))\)</span>
+                    <span class="eq-number">(5)</span>
                 </div>
 
                 <p>where <em>A(t)</em> is the amplitude control envelope, <em>M<sub>b</sub>(t)</em> is the baseband modulation, <em>f<sub>c</sub></em> is the carrier frequency, and <em>φ(t)</em> is the phase modulation for timing control. In practice, the IEMI signal's amplitude and frequency ranges are constrained by the maximum output power and frequency of the EM modulation and generation device.</p>
@@ -1113,7 +1113,7 @@
             <section class="section" id="resources">
                 <h2>Resources</h2>
                 <div class="links">
-                    <a href="#" class="btn" title="Paper PDF">📄 Paper (PDF)</a>
+                    <a href="https://www.usenix.org/system/files/conference/usenixsecurity26/sec26_prepub_jiang-qinhong.pdf" class="btn" title="Paper PDF" target="_blank" rel="noopener">📄 Paper (PDF)</a>
                     <a href="#" class="btn btn-secondary" title="Code Repository">💻 Code (GitHub)</a>
                     <a href="#" class="btn btn-secondary" title="Dataset">📊 Dataset</a>
                     <a href="#" class="btn btn-secondary" title="Slides">🎤 Slides</a>
