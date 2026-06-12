@@ -3,23 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SoK: Security of CPS Under IEMI Attacks</title>
+        <title>IEMI Research Database | SoK on CPS Security Under Intentional Electromagnetic Interference Attacks</title>
     <!-- SEO basics -->
-    <meta name="description" content="Systematization of knowledge on CPS security under intentional electromagnetic interference (IEMI) attacks. Accepted at USENIX Security 2026.">
-    <meta name="keywords" content="IEMI, CPS security, electromagnetic interference, cyber-physical systems, USENIX Security 2026, SoK">
+        <meta name="description" content="IEMI Research Database and SoK resource on cyber-physical systems security under intentional electromagnetic interference attacks. Explore 80+ papers, threat models, attack/defense insights, and filtered literature views.">
+        <meta name="keywords" content="IEMI research database, intentional electromagnetic interference, cyber-physical systems security, EMI signal injection, EMFI, EMSI, sampler attacks, USENIX Security 2026, SoK">
+        <meta name="author" content="Qinhong Jiang, Yan Long, Youqian Zhang, Chen Yan, Xiaoyu Ji, Xiapu Luo, Kevin Fu, Jiannong Cao, Wenyuan Xu">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://iemi-research-database.github.io/">
+        <link rel="alternate" hreflang="en" href="https://iemi-research-database.github.io/">
+        <meta name="googlebot" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
     <!-- Open Graph -->
-    <meta property="og:title" content="SoK: Security of Cyber-Physical Systems Under IEMI Attacks">
-    <meta property="og:description" content="Systematization of knowledge on CPS security under IEMI attacks. Accepted at USENIX Security 2026.">
+        <meta property="og:title" content="IEMI Research Database | SoK: CPS Security Under IEMI Attacks">
+        <meta property="og:description" content="Explore IEMI attack and defense research across CPS domains with searchable papers, threat models, and key observations from our USENIX Security 2026 SoK.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://iemi-research-database.github.io/">
+        <meta property="og:image" content="https://iemi-research-database.github.io/imgaes/coupling_sample2025v2.jpg">
+        <meta property="og:image:alt" content="IEMI coupling mechanism diagram for cyber-physical systems">
     <meta property="og:locale" content="en_US">
     <!-- Twitter Cards -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="SoK: Security of Cyber-Physical Systems Under IEMI Attacks">
-    <meta name="twitter:description" content="Systematization of knowledge on CPS security under IEMI attacks. Accepted at USENIX Security 2026.">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="IEMI Research Database | SoK on CPS Security">
+        <meta name="twitter:description" content="A searchable IEMI research database with 80+ papers, threat modeling insights, and CPS-focused security analysis.">
+        <meta name="twitter:image" content="https://iemi-research-database.github.io/imgaes/coupling_sample2025v2.jpg">
     <meta name="theme-color" content="#3498db">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@type": "WebSite",
+                    "name": "IEMI Research Database",
+                    "url": "https://iemi-research-database.github.io/",
+                    "description": "Searchable database and SoK resource on intentional electromagnetic interference attacks against cyber-physical systems.",
+                    "inLanguage": "en"
+                },
+                {
+                    "@type": "ScholarlyArticle",
+                    "headline": "SoK: Security of Cyber-Physical Systems Under Intentional Electromagnetic Interference Attacks",
+                    "datePublished": "2026",
+                    "isPartOf": "USENIX Security 2026",
+                    "url": "https://iemi-research-database.github.io/",
+                    "author": [
+                        {"@type": "Person", "name": "Qinhong Jiang"},
+                        {"@type": "Person", "name": "Yan Long"},
+                        {"@type": "Person", "name": "Youqian Zhang"},
+                        {"@type": "Person", "name": "Chen Yan"},
+                        {"@type": "Person", "name": "Xiaoyu Ji"},
+                        {"@type": "Person", "name": "Xiapu Luo"},
+                        {"@type": "Person", "name": "Kevin Fu"},
+                        {"@type": "Person", "name": "Jiannong Cao"},
+                        {"@type": "Person", "name": "Wenyuan Xu"}
+                    ]
+                },
+                {
+                    "@type": "Dataset",
+                    "name": "IEMI Research Database",
+                    "description": "Curated dataset of intentional electromagnetic interference attack and defense studies across CPS domains.",
+                    "url": "https://iemi-research-database.github.io/#paper-database",
+                    "keywords": ["IEMI", "EMFI", "EMSI", "cyber-physical systems", "signal injection", "hardware security"],
+                    "creator": {"@type": "Organization", "name": "IEMI Research Team"},
+                    "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                }
+            ]
+        }
+        </script>
     <style>
         * {
             margin: 0;
@@ -28,10 +78,13 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Plus Jakarta Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #1f2937;
+            background:
+                radial-gradient(circle at 15% 10%, rgba(52, 152, 219, 0.14), transparent 32%),
+                radial-gradient(circle at 85% 20%, rgba(231, 76, 60, 0.11), transparent 36%),
+                linear-gradient(180deg, #eef4fb 0%, #f8fbff 48%, #eef2f7 100%);
         }
 
         .container {
@@ -41,18 +94,20 @@
         }
 
         header {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            padding: 40px 0;
+            background: linear-gradient(145deg, #ffffff 0%, #f2f8ff 100%);
+            box-shadow: 0 10px 28px rgba(21, 58, 93, 0.12);
+            padding: 46px 0;
             text-align: center;
             margin-bottom: 40px;
+            border-bottom: 1px solid rgba(52, 152, 219, 0.15);
         }
 
         header h1 {
-            font-size: 2.5em;
-            color: #2c3e50;
+            font-size: 2.6em;
+            color: #10253d;
             margin-bottom: 10px;
             line-height: 1.3;
+            letter-spacing: -0.02em;
         }
 
         header p {
@@ -179,19 +234,21 @@
         }
 
         .section {
-            background: white;
-            border-radius: 8px;
+            background: rgba(255,255,255,0.92);
+            border-radius: 14px;
             padding: 40px;
             margin-bottom: 30px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 26px rgba(17, 45, 78, 0.08);
+            border: 1px solid rgba(52, 152, 219, 0.12);
         }
 
         h2 {
-            color: #2c3e50;
+            color: #10253d;
             font-size: 2em;
             margin-bottom: 20px;
-            border-bottom: 3px solid #3498db;
+            border-bottom: 3px solid #1f7ebf;
             padding-bottom: 10px;
+            letter-spacing: -0.01em;
         }
 
         h3 {
@@ -203,8 +260,77 @@
 
         p {
             margin-bottom: 15px;
-            text-align: justify;
-            color: #555;
+            text-align: left;
+            color: #334155;
+        }
+
+        .quick-nav {
+            position: sticky;
+            top: 10px;
+            z-index: 30;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 0 0 20px;
+            padding: 12px;
+            background: rgba(15, 36, 58, 0.9);
+            border-radius: 12px;
+            backdrop-filter: blur(6px);
+            box-shadow: 0 8px 20px rgba(15, 36, 58, 0.24);
+        }
+
+        .quick-nav a {
+            color: #e5eef7;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9em;
+            padding: 6px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(229, 238, 247, 0.25);
+            transition: all 0.2s ease;
+        }
+
+        .quick-nav a:hover {
+            color: #0f243a;
+            background: #e7f3ff;
+            border-color: #e7f3ff;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+            margin-top: 18px;
+        }
+
+        .summary-card {
+            background: linear-gradient(145deg, #f4f9ff 0%, #e8f2ff 100%);
+            border: 1px solid #c9def3;
+            border-radius: 12px;
+            padding: 16px;
+        }
+
+        .summary-card h4 {
+            margin-bottom: 8px;
+            color: #0f3256;
+            font-size: 1.05em;
+        }
+
+        .keyword-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        .keyword-chips span {
+            background: #edf5ff;
+            color: #0f3b63;
+            border: 1px solid #c9def3;
+            border-radius: 999px;
+            padding: 6px 12px;
+            font-size: 0.88em;
+            font-weight: 600;
         }
 
         .authors {
@@ -291,6 +417,10 @@
             gap: 12px;
             align-items: center;
             margin: 20px 0 10px;
+            padding: 14px;
+            background: #f7fbff;
+            border: 1px solid #d5e7f8;
+            border-radius: 12px;
         }
 
         .search-controls label {
@@ -496,7 +626,7 @@
             background: #f8f9fa;
             padding: 20px;
             border-radius: 8px;
-            font-family: 'Courier New', monospace;
+            font-family: 'Source Serif 4', Georgia, serif;
             font-size: 0.9em;
             overflow-x: auto;
             margin: 20px 0;
@@ -543,11 +673,30 @@
         }
 
         .observation-box {
-            border: 2px solid #3498db;
+            border: 1px solid #bfdff7;
             border-radius: 8px;
             padding: 20px;
             margin: 20px 0;
-            background: #f8fbff;
+            background: linear-gradient(160deg, #f8fbff 0%, #f2f8ff 100%);
+        }
+
+        .faq details {
+            border: 1px solid #dce9f5;
+            background: #fbfdff;
+            border-radius: 10px;
+            padding: 14px 16px;
+            margin-bottom: 10px;
+        }
+
+        .faq summary {
+            cursor: pointer;
+            color: #10253d;
+            font-weight: 700;
+        }
+
+        .faq p {
+            margin-top: 8px;
+            margin-bottom: 0;
         }
 
         .observation-box h4 {
@@ -575,6 +724,10 @@
         @media (max-width: 768px) {
             header h1 {
                 font-size: 1.8em;
+            }
+
+            .quick-nav {
+                position: static;
             }
 
             .section {
@@ -642,8 +795,46 @@
 
     <main>
         <div class="container">
+            <nav class="quick-nav" aria-label="Section navigation">
+                <a href="#abstract">Abstract</a>
+                <a href="#paper-database">Database</a>
+                <a href="#motivation">Motivation</a>
+                <a href="#problem-formulation">Problem Formulation</a>
+                <a href="#observations">Key Observations</a>
+                <a href="#authors">Authors</a>
+                <a href="#resources">Resources</a>
+                <a href="#citation">Citation</a>
+            </nav>
+
+            <section class="section" id="overview">
+                <h2>Research Overview</h2>
+                <p>This website presents a structured, searchable view of intentional electromagnetic interference (IEMI) research for cyber-physical systems (CPS), with practical emphasis on attack surfaces, target samplers, coupling paths, and defense implications.</p>
+                <div class="summary-grid">
+                    <div class="summary-card">
+                        <h4>80+ Curated Studies</h4>
+                        <p>Cross-domain coverage spanning smart IoT, autonomous driving, medical systems, and critical infrastructure.</p>
+                    </div>
+                    <div class="summary-card">
+                        <h4>Model-Driven Lens</h4>
+                        <p>Unified analysis of IEMI coupling and sample manipulation to compare attacks beyond device-specific demonstrations.</p>
+                    </div>
+                    <div class="summary-card">
+                        <h4>Actionable Filtering</h4>
+                        <p>Explore papers by application, target system, target sampler, and publication year for rapid literature review.</p>
+                    </div>
+                </div>
+                <div class="keyword-chips" aria-label="Topical keywords">
+                    <span>IEMI attacks</span>
+                    <span>EMFI and EMSI</span>
+                    <span>Cyber-physical systems security</span>
+                    <span>Signal injection</span>
+                    <span>Hardware security</span>
+                    <span>Sampler vulnerabilities</span>
+                </div>
+            </section>
+
             <!-- 摘要 -->
-            <section class="section">
+            <section class="section" id="abstract">
                 <h2>Abstract</h2>
                 <div class="highlight">
                     <p>Falsifying electrical signals in computer systems—the gateway between the physical and digital worlds—intentional electromagnetic interference (IEMI) attacks have become increasingly pervasive and damaging to cyber-physical systems due to their ability to disrupt or control a wide range of safety- and security-critical applications. Existing studies of IEMI attacks are often highly device-specific and exploit disparate, insufficiently compared attack vectors. The absence of a unified, model-based understanding of IEMI vulnerabilities hinders both transferable security assessments and effective cross-disciplinary collaboration toward deployable protections. To address this gap, this work analyzes over 80 instances of IEMI attacks and defenses to provide an analytical framework that models how adversaries achieve IEMI coupling and sample manipulation to inject malicious electromagnetic energy that alters hardware behavior and impacts software execution. The primary goal is to move the field beyond exhaustive empirical discovery of vulnerable instances and toward in-depth theoretical analysis and proactive defense strategies applicable to both existing and future cyber-physical systems. In addition to identifying gaps in current IEMI attack and defense research, this work outlines important directions for future work tailored to the needs and roles of different stakeholder communities.</p>
@@ -684,7 +875,7 @@
             </section>
 
             <!-- 研究动机 -->
-            <section class="section">
+            <section class="section" id="motivation">
                 <h2>Motivation</h2>
                 <p>Electromagnetic interference has long been a concern in system design, but the growing threat of IEMI attacks against interconnected cyber-physical systems has made this issue increasingly urgent. We identify several key gaps that motivate this systematization.</p>
                 
@@ -702,7 +893,7 @@
             </section>
 
             <!-- IEMI问题建模 -->
-            <section class="section">
+            <section class="section" id="problem-formulation">
                 <h2>IEMI Problem Formulation</h2>
                 
                 <p>This section introduces the model underpinning our systematization of IEMI attacks and defenses. The IEMI attack process against a hardware <strong>target sampler</strong> and its surrounding system is modeled as the combination of <strong>IEMI coupling</strong>, which establishes a physical channel for malicious signal delivery, and <strong>sample manipulation</strong>, which translates attacker intent and target behavior into adversarial IEMI waveform designs. The model is deliberately kept simple while preserving generality and precision and serves as the foundation for our subsequent literature analysis.</p>
@@ -742,7 +933,7 @@
                 <p>The transfer function <em>T(·)</em> is characterized by its frequency response to the EM energy generation by the adversary and embodies the impact of several target-specific factors, such as the distance and angle between the adversary and the target, the casing material of the target hardware, and other environmental factors. As shown in <strong>Figure 2</strong>, the coupling mechanism demonstrates how adversarial EM signals propagate and couple with the target system:</p>
 
                 <div style="text-align: center; margin: 20px 0;">
-                    <img src="imgaes/coupling_sample2025v2.jpg" alt="Figure 2: IEMI Coupling Mechanism Diagram" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 5px; padding: 10px;">
+                    <img src="imgaes/coupling_sample2025v2.jpg" alt="Figure 2: IEMI Coupling Mechanism Diagram" loading="lazy" decoding="async" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 5px; padding: 10px;">
                     <p style="font-size: 0.9em; color: #666; margin-top: 10px;"><strong>Figure 2:</strong> IEMI Coupling Sample: Physical channels for electromagnetic energy delivery to target samplers</p>
                 </div>
 
@@ -783,7 +974,7 @@
             </section>
 
             <!-- 主要观察 -->
-            <section class="section">
+            <section class="section" id="observations">
                 <h2>Key Observations</h2>
 
                 <div class="observation-box">
@@ -831,11 +1022,11 @@
             </section>
 
             <!-- 作者信息 -->
-            <section class="section">
+            <section class="section" id="authors">
                 <h2>Authors</h2>
                 <div class="authors">
                     <div class="author">
-                        <img class="author-avatar" src="imgaes/Qinhong Jiang.jpg" alt="Qinhong Jiang">
+                        <img class="author-avatar" src="imgaes/Qinhong Jiang.jpg" alt="Qinhong Jiang" loading="lazy" decoding="async">
                         <div class="author-name">Qinhong Jiang</div>
                         <div class="author-affiliation">The Hong Kong Polytechnic<br>University</div>
                         <div class="author-links">
@@ -844,7 +1035,7 @@
                         </div>
                     </div>
                     <div class="author">
-                        <img class="author-avatar" src="imgaes/Yan Long.png" alt="Yan Long">
+                        <img class="author-avatar" src="imgaes/Yan Long.png" alt="Yan Long" loading="lazy" decoding="async">
                         <div class="author-name">Yan Long</div>
                         <div class="author-affiliation">The Hong Kong University of Science<br>and Technology (Guangzhou)</div>
                         <div class="author-links">
@@ -853,7 +1044,7 @@
                         </div>
                     </div>
                     <div class="author">
-                        <img class="author-avatar" src="imgaes/Youqian Zhang.jpg" alt="Youqian Zhang">
+                        <img class="author-avatar" src="imgaes/Youqian Zhang.jpg" alt="Youqian Zhang" loading="lazy" decoding="async">
                         <div class="author-name">Youqian Zhang</div>
                         <div class="author-affiliation">The Hong Kong Polytechnic<br>University</div>
                         <div class="author-links">
@@ -862,7 +1053,7 @@
                         </div>
                     </div>
                     <div class="author">
-                        <img class="author-avatar" src="imgaes/Yan Chen.jpg" alt="Yan Chen">
+                        <img class="author-avatar" src="imgaes/Yan Chen.jpg" alt="Yan Chen" loading="lazy" decoding="async">
                         <div class="author-name">Yan Chen</div>
                         <div class="author-affiliation">Zhejiang University</div>
                         <div class="author-links">
@@ -871,7 +1062,7 @@
                         </div>
                     </div>
                     <div class="author">
-                        <img class="author-avatar" src="imgaes/Xiaoyu Ji.jpg" alt="Xiaoyu Ji">
+                        <img class="author-avatar" src="imgaes/Xiaoyu Ji.jpg" alt="Xiaoyu Ji" loading="lazy" decoding="async">
                         <div class="author-name">Xiaoyu Ji</div>
                         <div class="author-affiliation">Zhejiang University</div>
                         <div class="author-links">
@@ -880,7 +1071,7 @@
                         </div>
                     </div>
                     <div class="author">
-                        <img class="author-avatar" src="imgaes/Xiapu Luo.jpg" alt="Xiapu Luo">
+                        <img class="author-avatar" src="imgaes/Xiapu Luo.jpg" alt="Xiapu Luo" loading="lazy" decoding="async">
                         <div class="author-name">Xiapu Luo</div>
                         <div class="author-affiliation">The Hong Kong Polytechnic<br>University</div>
                         <div class="author-links">
@@ -889,7 +1080,7 @@
                         </div>
                     </div>
                     <div class="author">
-                        <img class="author-avatar" src="imgaes/Kevin Fu.jpg" alt="Kevin Fu">
+                        <img class="author-avatar" src="imgaes/Kevin Fu.jpg" alt="Kevin Fu" loading="lazy" decoding="async">
                         <div class="author-name">Kevin Fu</div>
                         <div class="author-affiliation">Northeastern University</div>
                         <div class="author-links">
@@ -898,7 +1089,7 @@
                         </div>
                     </div>
                     <div class="author">
-                        <img class="author-avatar" src="imgaes/Jiannong Cao.jpg" alt="Jiannong Cao">
+                        <img class="author-avatar" src="imgaes/Jiannong Cao.jpg" alt="Jiannong Cao" loading="lazy" decoding="async">
                         <div class="author-name">Jiannong Cao</div>
                         <div class="author-affiliation">The Hong Kong Polytechnic<br>University</div>
                         <div class="author-links">
@@ -907,7 +1098,7 @@
                         </div>
                     </div>
                     <div class="author">
-                        <img class="author-avatar" src="imgaes/Wenyuan Xu.jpg" alt="Wenyuan Xu">
+                        <img class="author-avatar" src="imgaes/Wenyuan Xu.jpg" alt="Wenyuan Xu" loading="lazy" decoding="async">
                         <div class="author-name">Wenyuan Xu</div>
                         <div class="author-affiliation">Zhejiang University</div>
                         <div class="author-links">
@@ -919,7 +1110,7 @@
             </section>
 
             <!-- 资源 -->
-            <section class="section">
+            <section class="section" id="resources">
                 <h2>Resources</h2>
                 <div class="links">
                     <a href="#" class="btn" title="Paper PDF">📄 Paper (PDF)</a>
@@ -933,7 +1124,23 @@
             </section>
 
             <!-- 引用 -->
-                        <section class="section">
+                        <section class="section faq" id="faq">
+                                <h2>FAQ for Researchers</h2>
+                                <details>
+                                    <summary>What is the IEMI Research Database used for?</summary>
+                                    <p>It supports rapid literature discovery and comparative analysis for intentional electromagnetic interference attacks, with structured fields for targets, coupling paths, signal assumptions, and attack objectives.</p>
+                                </details>
+                                <details>
+                                    <summary>Which domains are covered in this CPS security dataset?</summary>
+                                    <p>The dataset includes smart IoT, autonomous driving, medical healthcare, industrial automation, power systems, EV charging, and serial communication systems.</p>
+                                </details>
+                                <details>
+                                    <summary>How can I contribute new IEMI papers or corrections?</summary>
+                                    <p>Use the Submit and Report buttons in the database section to share newly published papers, metadata corrections, or taxonomy updates.</p>
+                                </details>
+            </section>
+
+                        <section class="section" id="citation">
                                 <h2>Citation</h2>
                                 <p>If you use this work, please cite:</p>
                 <div class="citation">
@@ -948,7 +1155,7 @@
             </section>
 
             <!-- 致谢 -->
-            <section class="section">
+            <section class="section" id="acknowledgments">
                 <h2>Acknowledgments</h2>
                 <p>We thank USENIX Security 2026 for acceptance and all contributors and reviewers for their valuable feedback.</p>
                 <p>Special thanks to:</p>
@@ -1302,7 +1509,7 @@
                 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">License: CC BY-NC-SA 4.0</a>
             </p>
             <p style="margin-top: 20px; font-size: 0.85em; color: #bdc3c7;">
-                Last updated: January 2026
+                Last updated: June 2026
             </p>
         </div>
     </footer>
