@@ -382,6 +382,10 @@
             background: #7f8c8d;
         }
 
+        .btn-sort-active {
+            background: #1f6fb2;
+        }
+
         /* Custom accents for action buttons */
         #submit-btn {
             background: #e74c3c;
@@ -669,6 +673,8 @@
                     </label>
                     <button id="search-btn" class="btn" type="button">Search</button>
                     <button id="reset-btn" class="btn btn-secondary" type="button">Reset</button>
+                    <button id="sort-year-asc" class="btn btn-secondary" type="button">Year ↑</button>
+                    <button id="sort-year-desc" class="btn btn-secondary" type="button">Year ↓</button>
                     <a id="submit-btn" class="btn btn-secondary" href="mailto:qinhong.jiang@polyu.edu.hk?subject=IEMI%20Research%20Database%20Submission" title="Submit new paper data"><span class="btn-icon">📤</span>Submit and Contribute to Database</a>
                     <a id="report-btn" class="btn btn-secondary" href="mailto:qinhong.jiang@polyu.edu.hk?subject=IEMI%20Database%20Error%20Report" title="Report data errors or corrections"><span class="btn-icon">🔧</span>Report Error</a>
                 </div>
@@ -1066,6 +1072,26 @@
         const applicationSelect = document.getElementById('filter-application');
         const resultsDiv = document.getElementById('search-results');
         const summaryDiv = document.getElementById('search-summary');
+        const sortYearAscBtn = document.getElementById('sort-year-asc');
+        const sortYearDescBtn = document.getElementById('sort-year-desc');
+        let yearSortOrder = 'none';
+
+        function updateSortButtonState() {
+            sortYearAscBtn.classList.toggle('btn-sort-active', yearSortOrder === 'asc');
+            sortYearDescBtn.classList.toggle('btn-sort-active', yearSortOrder === 'desc');
+        }
+
+        function sortPapersByYear(data) {
+            if (yearSortOrder === 'none') {
+                return data;
+            }
+
+            return [...data].sort((a, b) => {
+                const yearA = Number(a.year) || 0;
+                const yearB = Number(b.year) || 0;
+                return yearSortOrder === 'asc' ? yearA - yearB : yearB - yearA;
+            });
+        }
 
         function renderOptions(filterApplication = '', filterSystem = '', filterSampler = '') {
             // Filter papers based on current selections
@@ -1158,6 +1184,9 @@
 
                 return `
                     <tr>
+                        <td>${paper.title}</td>
+                        <td>${paper.venue}</td>
+                        <td>${paper.year}</td>
                         <td>${application}</td>
                         <td>${paper.targetSystem}</td>
                         <td>${paper.targetSampler}</td>
@@ -1175,9 +1204,6 @@
                         <td>${couplingInterface}</td>
                         <td>${couplingPath}</td>
                         <td><small><strong>Sampler:</strong> ${samplerAttack}<br/><strong>Timing:</strong> ${timingControl}<br/><strong>Amplitude:</strong> ${amplitudeControl}</small></td>
-                        <td>${paper.title}</td>
-                        <td>${paper.venue}</td>
-                        <td>${paper.year}</td>
                     </tr>
                 `;
             }).join('');
@@ -1191,6 +1217,7 @@
                     <table aria-label="IEMI papers">
                         <thead>
                             <tr class="header-row-1">
+                                <th colspan="3">Paper &amp; Authorship</th>
                                 <th rowspan="2">Application</th>
                                 <th rowspan="2">Target System</th>
                                 <th rowspan="2">Target Sampler</th>
@@ -1201,11 +1228,11 @@
                                 <th rowspan="2">Attack Objective</th>
                                 <th colspan="3">IEMI Coupling</th>
                                 <th rowspan="2">Sample Manipulation</th>
-                                <th rowspan="2">Paper Title</th>
-                                <th rowspan="2">Venue</th>
-                                <th rowspan="2">Year</th>
                             </tr>
                             <tr class="header-row-2">
+                                <th>Paper Title</th>
+                                <th>Venue</th>
+                                <th>Year</th>
                                 <th>Test Frequency</th>
                                 <th>Sensitive Frequency</th>
                                 <th>Power</th>
@@ -1256,7 +1283,8 @@
             });
 
             summaryDiv.textContent = `${filtered.length} result${filtered.length === 1 ? '' : 's'} found`;
-            renderTable(filtered, isSearched);
+            const sortedFiltered = sortPapersByYear(filtered);
+            renderTable(sortedFiltered, isSearched);
         }
 
         document.getElementById('search-btn').addEventListener('click', filterPapers);
@@ -1264,10 +1292,24 @@
             systemSelect.value = '';
             samplerSelect.value = '';
             applicationSelect.value = '';
+            yearSortOrder = 'none';
+            updateSortButtonState();
             summaryDiv.textContent = '';
             resultsDiv.innerHTML = '';
             resultsDiv.classList.remove('collapsed');
             renderOptions(); // Reset all dropdowns to show all options
+        });
+
+        sortYearAscBtn.addEventListener('click', () => {
+            yearSortOrder = yearSortOrder === 'asc' ? 'none' : 'asc';
+            updateSortButtonState();
+            filterPapers();
+        });
+
+        sortYearDescBtn.addEventListener('click', () => {
+            yearSortOrder = yearSortOrder === 'desc' ? 'none' : 'desc';
+            updateSortButtonState();
+            filterPapers();
         });
 
         // Add cascading dropdown behavior
@@ -1283,6 +1325,7 @@
             updateDropdowns();
         });
 
+        updateSortButtonState();
         renderOptions();
         renderTable(papers, false);
     </script>
