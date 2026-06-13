@@ -187,18 +187,24 @@
 
         .header-logos {
             display: flex;
-            gap: 30px;
+            gap: 14px;
             justify-content: center;
             align-items: center;
-            margin-top: 15px;
+            margin-top: 18px;
             flex-wrap: wrap;
         }
 
         .header-logo {
-            height: 50px;
+            height: 56px;
+            width: 180px;
             object-fit: contain;
-            opacity: 0.8;
-            transition: opacity 0.3s;
+            opacity: 0.95;
+            background: #ffffff;
+            border: 1px solid #d8e6f5;
+            border-radius: 10px;
+            padding: 8px 12px;
+            box-shadow: 0 3px 10px rgba(22, 53, 87, 0.08);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .header-badges {
@@ -247,7 +253,12 @@
         }
 
         .header-logo:hover {
-            opacity: 1;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(22, 53, 87, 0.16);
+        }
+
+        .header-logo.logo-hkust {
+            width: 240px;
         }
 
         .badge {
@@ -795,10 +806,10 @@
                 <span>·</span>
                 <a href="mailto:wyxu@zju.edu.cn">Wenyuan Xu</a><span class="aff-sup">3</span>
             </p>
-            <p class="header-affiliations"><sup>1</sup> The Hong Kong Polytechnic University · <sup>2</sup> The Hong Kong University of Science and Technology (Guangzhou) · <sup>3</sup> Zhejiang University · <sup>4</sup> Northeastern University</p>
+            <p class="header-affiliations"><sup>1</sup> The Hong Kong Polytechnic University · <sup>2</sup> HKUS (GZ) · <sup>3</sup> Zhejiang University · <sup>4</sup> Northeastern University</p>
             <div class="header-logos">
                 <img class="header-logo" src="imgaes\polyu-logo.png" alt="The Hong Kong Polytechnic University">
-                <img class="header-logo" src="imgaes/HKUST(GZ)_Logo-2.png" alt="HKUST Guangzhou">
+                <img class="header-logo logo-hkust" src="imgaes/HKUST(GZ)_Logo-2.png" alt="HKUST Guangzhou">
                 <img class="header-logo" src="imgaes\zju-logo.png" alt="Zhejiang University">
                 <img class="header-logo" src="imgaes/Northeastern-University-Logo.png" alt="Northeastern University">
             </div>
@@ -830,13 +841,11 @@
     <main>
         <div class="container">
             <nav class="quick-nav" aria-label="Section navigation">
-                <a href="#abstract">Abstract</a>
                 <a href="#paper-database">Database</a>
                 <a href="#motivation">Motivation</a>
                 <a href="#problem-formulation">Problem Formulation</a>
                 <a href="#observations">Key Observations</a>
                 <a href="#authors">Authors</a>
-                <a href="#resources">Resources</a>
                 <a href="#citation">Citation</a>
             </nav>
 
@@ -864,14 +873,6 @@
                     <span>Signal injection</span>
                     <span>Hardware security</span>
                     <span>Sampler vulnerabilities</span>
-                </div>
-            </section>
-
-            <!-- 摘要 -->
-            <section class="section" id="abstract">
-                <h2>Abstract</h2>
-                <div class="highlight">
-                    <p>Falsifying electrical signals in computer systems—the gateway between the physical and digital worlds—intentional electromagnetic interference (IEMI) attacks have become increasingly pervasive and damaging to cyber-physical systems due to their ability to disrupt or control a wide range of safety- and security-critical applications. Existing studies of IEMI attacks are often highly device-specific and exploit disparate, insufficiently compared attack vectors. The absence of a unified, model-based understanding of IEMI vulnerabilities hinders both transferable security assessments and effective cross-disciplinary collaboration toward deployable protections. To address this gap, this work analyzes over 80 instances of IEMI attacks and defenses to provide an analytical framework that models how adversaries achieve IEMI coupling and sample manipulation to inject malicious electromagnetic energy that alters hardware behavior and impacts software execution. The primary goal is to move the field beyond exhaustive empirical discovery of vulnerable instances and toward in-depth theoretical analysis and proactive defense strategies applicable to both existing and future cyber-physical systems. In addition to identifying gaps in current IEMI attack and defense research, this work outlines important directions for future work tailored to the needs and roles of different stakeholder communities.</p>
                 </div>
             </section>
 
@@ -1128,14 +1129,6 @@
                         </div>
                     </div>
                 </div>
-            </section>
-
-            <!-- 资源 -->
-            <section class="section" id="resources">
-                <h2>Resources</h2>
-                <p style="text-align: center; color: #7f8c8d;">
-                    The four resource links are shown in the header next to <strong>USENIX Security 2026</strong> for quicker access.
-                </p>
             </section>
 
             <!-- 引用 -->
