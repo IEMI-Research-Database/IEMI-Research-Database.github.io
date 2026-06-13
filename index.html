@@ -160,22 +160,21 @@
             max-width: 900px;
             margin-left: auto;
             margin-right: auto;
-            font-size: 0.95em;
-            flex-wrap: wrap;
-            display: flex;
-            justify-content: center;
-            gap: 6px;
+            font-size: 0.9em;
+            display: block;
+            white-space: nowrap;
+            overflow-x: auto;
         }
 
         @media (max-width: 768px) {
             .header-affiliations {
-                font-size: 0.85em;
+                font-size: 0.8em;
             }
         }
 
         @media (max-width: 480px) {
             .header-affiliations {
-                font-size: 0.75em;
+                font-size: 0.72em;
             }
         }
 
@@ -208,6 +207,30 @@
             flex-direction: column;
             gap: 10px;
             align-items: center;
+        }
+
+        .conference-links {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .resource-pill {
+            display: inline-block;
+            background: #0f6cbd;
+            color: #fff;
+            text-decoration: none;
+            padding: 7px 12px;
+            border-radius: 999px;
+            font-size: 0.85em;
+            font-weight: 600;
+            transition: background 0.2s ease;
+        }
+
+        .resource-pill:hover {
+            background: #0b5a9e;
         }
 
         .badge-row {
@@ -782,6 +805,12 @@
             <div class="header-badges">
                 <div class="badge-row">
                     <span class="badge">USENIX Security 2026</span>
+                    <div class="conference-links" aria-label="Resource links">
+                        <a href="https://www.usenix.org/system/files/conference/usenixsecurity26/sec26_prepub_jiang-qinhong.pdf" class="resource-pill" target="_blank" rel="noopener">📄 Paper (PDF)</a>
+                        <a href="#" class="resource-pill">💻 Code (GitHub)</a>
+                        <a href="#" class="resource-pill">📊 Dataset</a>
+                        <a href="#" class="resource-pill">🎤 Slides</a>
+                    </div>
                 </div>
                 <div class="badge-row">
                     <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" aria-label="CC BY-NC-SA 4.0 License">
@@ -1104,14 +1133,8 @@
             <!-- 资源 -->
             <section class="section" id="resources">
                 <h2>Resources</h2>
-                <div class="links">
-                    <a href="https://www.usenix.org/system/files/conference/usenixsecurity26/sec26_prepub_jiang-qinhong.pdf" class="btn" title="Paper PDF" target="_blank" rel="noopener">📄 Paper (PDF)</a>
-                    <a href="#" class="btn btn-secondary" title="Code Repository">💻 Code (GitHub)</a>
-                    <a href="#" class="btn btn-secondary" title="Dataset">📊 Dataset</a>
-                    <a href="#" class="btn btn-secondary" title="Slides">🎤 Slides</a>
-                </div>
-                <p style="margin-top: 30px; text-align: center; color: #7f8c8d;">
-                    Links will be updated after the paper is published.
+                <p style="text-align: center; color: #7f8c8d;">
+                    The four resource links are shown in the header next to <strong>USENIX Security 2026</strong> for quicker access.
                 </p>
             </section>
 
