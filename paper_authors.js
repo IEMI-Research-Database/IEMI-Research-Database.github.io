@@ -27,7 +27,7 @@ window.paperAuthorsByTitle = {
   "Paralyzing Drones via EMI Signal Injection on Sensory Communication Channels": "Joonha Jang, ManGi Cho, Jaehoon Kim, Dongkwan Kim, Yongdae Kim",
   "One Shot All Kill: Building Optimal Attack on Swarm Drones": "Minki Lee, GangMin Kim, JongHyun Kang, Hyunwoo Kim, Jangwon Lee, Hongjun Choi",
   "ConfuSense: Sensor Reconfiguration Attacks for Stealthy UAV Manipulation": "Paul J Bonczek, Nicola Bezzo",
-  "Electromagnetic Interference Attacks on Cyber-Physical Systems: Theory, Demonstration, and Defense": "Qingyu Su, Handong Wang, Chaowei Sun, Bo Li, Jian Li",
+  "Electromagnetic Interference Attacks on Cyber-Physical Systems: Theory, Demonstration, and Defense": "Gokcen Yilmaz Dayanikli",
   "Physical-Layer Attacks Against Pulse Width Modulation-Controlled Actuators": "S.P. Gladyshev, P.S. Gladyshev, I.S. Okrainskaya, N. P. Gladychev",
   "A First Look at the Security of EEG-based Systems and Intelligent Algorithms under Physical Signal Injections": "Md Imran Hossen, Yazhou Tu, Xiali Hei",
   "Brain-Hack: Remotely Injecting False Brain-Waves with RF to Take Control of a Brain-Computer Interface": "Alexandre Armengol-Urpi, Reid Kovacs, Sanjay E. Sarma",
